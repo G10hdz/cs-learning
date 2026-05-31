@@ -33,3 +33,16 @@ public/mit-*/_offline-manifest.json
 18.02sc-fall-2010.zip
 18.06sc-fall-2011.zip
 *.pdf
+
+# AI Agent caches
+graphify-out/
+.claude/
+.qwen/
+.cursor/
+.aider/
+.cocoindex_code/
+*.pyc
+__pycache__/
+.env
+.env.local
+*.log
