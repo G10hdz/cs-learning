@@ -1,0 +1,210 @@
+[
+  {
+    "id": "optimization-convexa",
+    "slug": "optimization-convexa",
+    "title": "Optimización Convexa para ML",
+    "topic": "math",
+    "difficulty": "intermediate",
+    "timeEstimate": "3w",
+    "tags": [
+      "optimization",
+      "convex",
+      "gradient-descent",
+      "adam",
+      "numpy"
+    ],
+    "phase": 1
+  },
+  {
+    "id": "probabilidad-aplicada",
+    "slug": "probabilidad-aplicada",
+    "title": "Probabilidad Aplicada para ML",
+    "topic": "math",
+    "difficulty": "intermediate",
+    "timeEstimate": "3w",
+    "tags": [
+      "probability",
+      "statistics",
+      "mle",
+      "bayesian",
+      "numpy"
+    ],
+    "phase": 1
+  },
+  {
+    "id": "algebra-lineal-numerica",
+    "slug": "algebra-lineal-numerica",
+    "title": "Álgebra Lineal Numérica para ML",
+    "topic": "math",
+    "difficulty": "intermediate",
+    "timeEstimate": "3w",
+    "tags": [
+      "linear-algebra",
+      "svd",
+      "pca",
+      "ridge",
+      "numpy"
+    ],
+    "phase": 1
+  },
+  {
+    "id": "calculo-para-ml",
+    "slug": "calculo-para-ml",
+    "title": "Cálculo para ML: Backpropagation",
+    "topic": "math",
+    "difficulty": "intermediate",
+    "timeEstimate": "2w",
+    "tags": [
+      "calculus",
+      "backprop",
+      "autograd",
+      "chain-rule",
+      "numpy"
+    ],
+    "phase": 1
+  },
+  {
+    "id": "csapp-memory",
+    "slug": "csapp-memory",
+    "title": "CS:APP — Memory & Systems",
+    "topic": "systems",
+    "difficulty": "advanced",
+    "timeEstimate": "4w",
+    "tags": [
+      "c",
+      "memory",
+      "allocator",
+      "cache",
+      "systems"
+    ],
+    "phase": 2
+  },
+  {
+    "id": "os-concurrency",
+    "slug": "os-concurrency",
+    "title": "OS & Concurrencia para Inference",
+    "topic": "systems",
+    "difficulty": "advanced",
+    "timeEstimate": "3w",
+    "tags": [
+      "os",
+      "threads",
+      "concurrency",
+      "asyncio",
+      "python"
+    ],
+    "phase": 2
+  },
+  {
+    "id": "ml-fundamentals",
+    "slug": "ml-fundamentals",
+    "title": "ML Fundamentals desde Cero",
+    "topic": "ai",
+    "difficulty": "intermediate",
+    "timeEstimate": "4w",
+    "tags": [
+      "ml",
+      "logistic-regression",
+      "svm",
+      "cross-validation",
+      "numpy"
+    ],
+    "phase": 2
+  },
+  {
+    "id": "dl-basics-cnn",
+    "slug": "dl-basics-cnn",
+    "title": "Deep Learning Básico: CNNs",
+    "topic": "ai",
+    "difficulty": "intermediate",
+    "timeEstimate": "4w",
+    "tags": [
+      "deep-learning",
+      "cnn",
+      "mnist",
+      "pytorch",
+      "numpy"
+    ],
+    "phase": 2
+  },
+  {
+    "id": "mlops-intro",
+    "slug": "mlops-intro",
+    "title": "MLOps Intro: Pipeline end-to-end",
+    "topic": "ai",
+    "difficulty": "intermediate",
+    "timeEstimate": "3w",
+    "tags": [
+      "mlops",
+      "docker",
+      "fastapi",
+      "monitoring",
+      "drift"
+    ],
+    "phase": 2
+  },
+  {
+    "id": "distributed-raft",
+    "slug": "distributed-raft",
+    "title": "Sistemas Distribuidos: Raft",
+    "topic": "systems",
+    "difficulty": "advanced",
+    "timeEstimate": "4w",
+    "tags": [
+      "distributed-systems",
+      "raft",
+      "consensus",
+      "go",
+      "python"
+    ],
+    "phase": 3
+  },
+  {
+    "id": "advanced-inference-system",
+    "slug": "advanced-inference-system",
+    "title": "Diseño de Sistemas de Inference",
+    "topic": "ai",
+    "difficulty": "advanced",
+    "timeEstimate": "4w",
+    "tags": [
+      "inference",
+      "batching",
+      "caching",
+      "system-design",
+      "mlops"
+    ],
+    "phase": 3
+  },
+  {
+    "id": "nlp-finetuning",
+    "slug": "nlp-finetuning",
+    "title": "NLP/CV: Fine-tuning y LoRA",
+    "topic": "ai",
+    "difficulty": "advanced",
+    "timeEstimate": "4w",
+    "tags": [
+      "nlp",
+      "fine-tuning",
+      "lora",
+      "huggingface",
+      "peft"
+    ],
+    "phase": 3
+  },
+  {
+    "id": "mlops-advanced",
+    "slug": "mlops-advanced",
+    "title": "MLOps Avanzado: CI/CD + Drift",
+    "topic": "ai",
+    "difficulty": "advanced",
+    "timeEstimate": "3w",
+    "tags": [
+      "mlops",
+      "mlflow",
+      "drift",
+      "cicd",
+      "monitoring"
+    ],
+    "phase": 3
+  }
+]

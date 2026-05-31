@@ -1,0 +1,54 @@
+---
+title: ML Fundamentals desde Cero
+topic: ai
+difficulty: intermediate
+timeEstimate: 4w
+tags:
+  - ml
+  - logistic-regression
+  - svm
+  - cross-validation
+  - numpy
+phase: 2
+---
+
+import ResourceTable from '../../components/ResourceTable'
+import CheckpointCallout from '../../components/CheckpointCallout'
+import DeliverableList from '../../components/DeliverableList'
+import InteractiveCodeBlock from '../../components/InteractiveCodeBlock'
+
+# ML Fundamentals desde Cero
+
+> **Objetivo:** Completa los deliverables abajo antes de marcar este módulo como terminado.
+
+<ResourceTable rows={[
+  { tipo: 'Course', nombre: 'Stanford CS229 — Public Materials', url: 'https://cs229.stanford.edu/syllabus.html', nota: 'Free notes + assignments. Math-heavy but paired with coding tasks. Industry-referenced' },
+  { tipo: 'Book', nombre: 'Understanding Machine Learning (Shalev-Shwartz)', url: 'https://www.cs.huji.ac.il/~shais/UnderstandingMachineLearning/', nota: 'Free PDF. Clear theoretical bounds without hiding behind proofs' },
+  { tipo: 'Code', nombre: 'ML-From-Scratch (eriklindernoren)', url: 'https://github.com/eriklindernoren/ML-From-Scratch', nota: 'LR, SVM, CV from scratch in NumPy. 100+ lines per model' },
+]} />
+
+## Deliverables
+
+<DeliverableList moduleId="ml-fundamentals" items={[
+  'Implementa regresión logística con SGD en NumPy (sin sklearn)',
+  'Implementa SVM con SMO simplificado para clasificación binaria',
+  'Compara tu logistic regression vs sklearn en el mismo dataset (accuracy, tiempo)',
+  'Implementa k-fold cross-validation desde cero',
+  'Visualiza decision boundaries de ambos modelos con matplotlib',
+]} />
+
+<CheckpointCallout>
+Si tu logistic regression no converge en &lt;1000 iteraciones en iris dataset, revisa tu implementación del gradiente.
+</CheckpointCallout>
+
+## Starter Code
+
+<InteractiveCodeBlock
+  title="Placeholder — reemplaza con tu primer ejercicio"
+  description="ML Fundamentals desde Cero"
+  code={`// TODO: starter code para ML Fundamentals desde Cero
+console.log('Módulo: ML Fundamentals desde Cero')
+`}
+/>
+
+**Siguiente módulo:** [[dl-basics-cnn]]

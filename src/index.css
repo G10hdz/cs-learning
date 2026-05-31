@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+/* Google Fonts - Geist for headlines, Satoshi for body */
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Satoshi:wght@400;500;700&display=swap');
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  font-family: 'Geist', 'Satoshi', system-ui, sans-serif;
+  --font-sans: 'Geist', 'Satoshi', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url(https://assets.vercel.com/font/geist-sans/geist-sans-regular.woff2) format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url(https://assets.vercel.com/font/geist-sans/geist-sans-medium.woff2) format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url(https://assets.vercel.com/font/geist-sans/geist-sans-bold.woff2) format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background-color: #ffffff;
+  color: #0f172a;
+}
+
+html.dark body {
+  background-color: #020617;
+  color: #f8fafc;
+}
+
+body {
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+button, a, [role='button'], input, select, textarea {
+  touch-action: manipulation;
+}
+
+.prose a {
+  color: #4f46e5;
+  text-decoration: none;
+}
+
+.prose a:hover {
+  text-decoration: underline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Staggered fade-in animation for TrackPhaseView modules */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stagger-fade-in {
+  animation: fadeInUp 0.5s ease-out forwards;
+  opacity: 0;
+}

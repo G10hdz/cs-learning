@@ -1,0 +1,181 @@
+---
+title: PR Comments & Technical Writing
+topic: english
+difficulty: intermediate
+timeEstimate: 1w
+tags:
+  - english
+  - pr-review
+  - technical-writing
+  - github
+studyTool: notebooklm
+notebooklmModuleId: pr-comments
+---
+
+# PR Comments & Technical Writing
+
+> **Objetivo:** Escribir PR comments claros, constructivos y profesionales en inglés técnico. Tu código habla por sí mismo — tus PR comments hablan por tu capacidad de colaborar en equipos globales.
+
+## Objetivos de aprendizaje
+
+- Escribir PR reviews que son accionables, no opiniones vagas
+- Diferenciar entre nitpick, suggestion, y blocker — y marcarlos explícitamente
+- Dar feedback negativo sin sonar agresivo — el tono importa tanto como el contenido
+- Escribir PR descriptions que un reviewer entiende en 30 segundos
+- Usar Conventional Commits para mensajes de commit consistentes
+
+## Conceptos clave
+
+### PR Review Taxonomy
+
+```
+🔴 BLOCKER — Must fix before merge
+  "This introduces a race condition because the lock is acquired after the read."
+  "This query is missing an index — will table-scan on production (30M rows)."
+
+🟡 SUGGESTION — Should fix, but your call
+  "Consider extracting this into a separate function — the same logic appears
+   in 3 other files."
+  "What do you think about using a Set here instead of an Array? O(1) lookup
+   vs O(n)."
+
+🟢 NITPICK — Style/preference, merge either way
+  "nit: variable name — maybe `userCount` instead of `cnt` for clarity?"
+  "nit: extra blank line here."
+```
+
+### PR Comment Structure
+
+```
+[Severity tag] [Observation] → [Impact/Why] → [Suggestion/Action]
+
+❌ VAGO:
+  "This function is too long."
+
+✅ ACCIONABLE:
+  "suggestion: `processOrder()` is 120 lines and handles validation, payment,
+   and notification. Consider splitting into `validateOrder()`, `chargeOrder()`,
+   and `notifyOrder()`. This would make each piece testable independently and
+   easier to debug when payment fails vs validation fails."
+```
+
+### Tone Patterns
+
+| En vez de... | Mejor... |
+|-------------|----------|
+| "This is wrong." | "I think this might not handle the edge case where X is null — what do you think?" |
+| "You should..." | "What do you think about...?" / "Consider..." |
+| "Why did you do this?" | "I'm curious about this approach — what was the reasoning?" |
+| "This is a bad pattern." | "This pattern can lead to [problem]. An alternative is [X] because [reason]." |
+| "Fix this." | "Could we address [specific issue]? Here's one way: [code suggestion]." |
+
+### PR Description Template
+
+```markdown
+## What
+[One sentence: what does this PR do?]
+
+## Why
+[One sentence: why is this change needed? Link issue/ticket]
+
+## How
+[Bullet points: key implementation decisions]
+
+## Testing
+- [ ] Unit tests added/updated
+- [ ] Manual testing steps:
+  1. [Step]
+  2. [Step]
+
+## Screenshots (if UI change)
+[Before/After]
+
+## Checklist
+- [ ] No breaking changes to API
+- [ ] Documentation updated
+- [ ] Migration script included (if DB change)
+```
+
+### Conventional Commits
+
+```
+<type>(<scope>): <description>
+
+feat(auth): add OAuth2 login with Google provider
+fix(api): handle null user in profile endpoint
+refactor(db): extract connection pool into shared module
+docs(readme): add local development setup instructions
+test(checkout): add integration tests for payment flow
+chore(deps): bump react from 18 to 19
+```
+
+## Estrategia (1 semana)
+
+**Días 1-2 — Leer y analizar PR reviews reales**
+- Buscar 3 PRs mergeados en repos grandes (React, VSCode, Kubernetes) — leer reviews
+- Identificar: ¿qué comentarios son blocker vs suggestion vs nitpick?
+- Clasificar 20 comentarios reales por tipo y calidad
+
+**Días 3-4 — Escribir PR reviews**
+- Encontrar 3 PRs abiertos en proyectos open-source
+- Escribir una review completa para cada uno (no publicar, solo practicar)
+- Comparar tu review con las reviews reales que recibe ese PR
+
+**Día 5 — PR description + Conventional Commits**
+- Escribir 3 PR descriptions usando el template (para PRs ficticios o reales tuyos)
+- Reescribir tus últimos 10 commits en Conventional Commits format
+
+**Días 6-7 — Feedback negativo + tono**
+- Practicar reescribir 10 comentarios "agresivos" en tono constructivo
+- Simular code review con NotebookLM — que te dé código "malo", tú escribes review
+
+## Recursos
+
+| Recurso | Tipo | Link |
+|---|---|---|
+| Google Engineering Practices | Guía de code review | [eng-practices](https://google.github.io/eng-practices/review/) |
+| Conventional Commits | Estándar | [conventionalcommits.org](https://www.conventionalcommits.org/en/v1.0.0/) |
+| GitHub PR Review Docs | Documentación oficial | [GitHub Docs](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request) |
+| "How to Do Code Reviews Like a Human" | Artículo (tono) | [mtlynch.io](https://mtlynch.io/human-code-reviews-1/) |
+| Conventional Comments | Extensión del estándar | [conventionalcomments.org](https://conventionalcomments.org) |
+
+## Deliverables
+
+- [ ] 3 PRs reales analizados — clasificar 20 comentarios por tipo
+- [ ] 3 PR reviews escritas (práctica, no publicadas)
+- [ ] 3 PR descriptions usando el template
+- [ ] 10 comentarios reescritos: agresivo → constructivo
+- [ ] Últimos 10 commits en Conventional Commits format
+- [ ] Quiz de vocabulario técnico de PR review en NotebookLM — 80%+
+
+## Prompts para NotebookLM
+
+```
+1. Dame un diff de código con 5 problemas — yo escribo PR comments, tú evalúas si son accionables y constructivos
+2. ¿Cuál es la diferencia entre un nitpick y un blocker? Dame 10 ejemplos de cada uno
+3. Reescribe estos 5 comentarios en tono constructivo: [pega comentarios reales o inventados]
+4. Simula un PR review exchange: yo soy el reviewer, tú eres el author que responde a mis comentarios
+5. Dame 20 frases útiles para PR reviews organizadas por: blocker, suggestion, nitpick, praise
+6. ¿Cómo manejo un PR donde el author claramente no leyó el style guide — sin sonar pedante?
+7. Genera un quiz de vocabulario: yo defino términos como "LGTM", "nit", "bikeshedding", "rubber stamp" — tú verificas
+```
+
+## Siguiente fase
+
+- [ ] 3 PR reviews escritas con confianza (bloqueador vs sugerencia vs nitpick)
+- [ ] PR description template internalizado — se escribe en 2 minutos
+- [ ] Conventional Commits en memoria muscular
+- [ ] Feedback negativo → constructivo sin pensarlo
+
+**Siguiente módulo:** [[paper-reading]]
+
+{/* <!-- notebooklm-sync-start --> */}
+> NotebookLM module: `pr-comments`
+> Last synced: 2026-05-05T09:21:45.458Z
+
+## NotebookLM Summary
+_No summary returned._
+
+## NotebookLM Q&A
+_No Q&A returned._
+{/* <!-- notebooklm-sync-end --> */}

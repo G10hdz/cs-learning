@@ -1,0 +1,19 @@
+---
+source_file: "vite.config.ts"
+type: "code"
+community: "Vite Config"
+location: "L1"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Vite_Config
+---
+
+# vite.config.ts
+
+## Connections
+- [[mdxRawPlugin()]] - `contains` [EXTRACTED]
+- [[remarkWikiLinks()]] - `contains` [EXTRACTED]
+- [[toSlug()]] - `contains` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Vite_Config

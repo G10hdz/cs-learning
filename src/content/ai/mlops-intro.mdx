@@ -1,0 +1,54 @@
+---
+title: "MLOps Intro: Pipeline end-to-end"
+topic: ai
+difficulty: intermediate
+timeEstimate: 3w
+tags:
+  - mlops
+  - docker
+  - fastapi
+  - monitoring
+  - drift
+phase: 2
+---
+
+import ResourceTable from '../../components/ResourceTable'
+import CheckpointCallout from '../../components/CheckpointCallout'
+import DeliverableList from '../../components/DeliverableList'
+import InteractiveCodeBlock from '../../components/InteractiveCodeBlock'
+
+# MLOps Intro: Pipeline end-to-end
+
+> **Objetivo:** Completa los deliverables abajo antes de marcar este módulo como terminado.
+
+<ResourceTable rows={[
+  { tipo: 'Course', nombre: 'Full Stack Deep Learning (FSDL)', url: 'https://fullstackdeeplearning.com/', nota: 'Free slides + labs. Industry-standard pipeline walkthrough. Updated yearly' },
+  { tipo: 'Book', nombre: 'Made With ML (Goku Mohandas)', url: 'https://madewithml.com/', nota: 'Free, project-based. Docker/FastAPI/CI from day 1. Production-ready patterns' },
+  { tipo: 'Code', nombre: 'DataTalksClub MLOps Zoomcamp', url: 'https://github.com/DataTalksClub/mlops-zoomcamp', nota: 'Hands-on labs with real datasets. Active Discord. Covers exact stack' },
+]} />
+
+## Deliverables
+
+<DeliverableList moduleId="mlops-intro" items={[
+  'Pipeline completo: data → train → eval → deploy con Docker + FastAPI',
+  'Implementa health check endpoint y métricas de latency (p50, p95, p99)',
+  'Agrega monitoreo de drift básico: detecta cuando la distribución de inputs cambia',
+  'CI: GitHub Action que corre tests y alerta si el accuracy cae >2%',
+  'Documenta: runbook de incidente para cuando el modelo degrada en producción',
+]} />
+
+<CheckpointCallout>
+Si tu API de inferencia no tiene health checks, métricas de latency y manejo de errores, no está lista para producción.
+</CheckpointCallout>
+
+## Starter Code
+
+<InteractiveCodeBlock
+  title="Placeholder — reemplaza con tu primer ejercicio"
+  description="MLOps Intro: Pipeline end-to-end"
+  code={`// TODO: starter code para MLOps Intro: Pipeline end-to-end
+console.log('Módulo: MLOps Intro: Pipeline end-to-end')
+`}
+/>
+
+**Siguiente módulo:** [[distributed-raft]]

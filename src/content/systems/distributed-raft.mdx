@@ -1,0 +1,54 @@
+---
+title: "Sistemas Distribuidos: Raft"
+topic: systems
+difficulty: advanced
+timeEstimate: 4w
+tags:
+  - distributed-systems
+  - raft
+  - consensus
+  - go
+  - python
+phase: 3
+---
+
+import ResourceTable from '../../components/ResourceTable'
+import CheckpointCallout from '../../components/CheckpointCallout'
+import DeliverableList from '../../components/DeliverableList'
+import InteractiveCodeBlock from '../../components/InteractiveCodeBlock'
+
+# Sistemas Distribuidos: Raft
+
+> **Objetivo:** Completa los deliverables abajo antes de marcar este módulo como terminado.
+
+<ResourceTable rows={[
+  { tipo: 'Course', nombre: 'MIT 6.824 — Distributed Systems', url: 'https://pdos.csail.mit.edu/6.824/schedule.html', nota: 'Lab 2 is Raft in Go. Forces you to handle network partitions, logs, elections' },
+  { tipo: 'Book', nombre: 'The Raft Paper (Ongaro & Ousterhout)', url: 'https://raft.github.io/raft.pdf', nota: 'Original. Free. Readability-focused. Foundation for all modern consensus impls' },
+  { tipo: 'Code', nombre: 'HashiCorp Raft (Go)', url: 'https://github.com/hashicorp/raft', nota: 'Production-grade. Well-commented. Matches MIT lab structure but scales to real clusters' },
+]} />
+
+## Deliverables
+
+<DeliverableList moduleId="distributed-raft" items={[
+  'Implementa un key-value store distribuido con Raft consensus (MIT 6.824 lab)',
+  'Prueba particiones de red: el cluster debe elegir un nuevo líder en <3s',
+  'Implementa log compaction (snapshots) para evitar log ilimitado',
+  'Benchmark: latency y throughput con 3 nodos vs 5 nodos',
+  'Documenta: ¿por qué Raft garantiza safety pero no liveness bajo particiones indefinidas?',
+]} />
+
+<CheckpointCallout>
+Si tu implementación falla los tests de partición de red del lab MIT 6.824, no tienes consensus correcto.
+</CheckpointCallout>
+
+## Starter Code
+
+<InteractiveCodeBlock
+  title="Placeholder — reemplaza con tu primer ejercicio"
+  description="Sistemas Distribuidos: Raft"
+  code={`// TODO: starter code para Sistemas Distribuidos: Raft
+console.log('Módulo: Sistemas Distribuidos: Raft')
+`}
+/>
+
+**Siguiente módulo:** [[advanced-inference-system]]

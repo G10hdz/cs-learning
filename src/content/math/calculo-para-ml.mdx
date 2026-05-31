@@ -1,0 +1,71 @@
+---
+title: "Cálculo para ML: Backpropagation"
+topic: math
+difficulty: intermediate
+timeEstimate: 2w
+tags:
+  - calculus
+  - backprop
+  - autograd
+  - chain-rule
+  - numpy
+phase: 1
+notebooklmModuleId: calculo-para-ml
+---
+
+import ResourceTable from '../../components/ResourceTable'
+import CheckpointCallout from '../../components/CheckpointCallout'
+import DeliverableList from '../../components/DeliverableList'
+import InteractiveCodeBlock from '../../components/InteractiveCodeBlock'
+import OfflineCourseButton from '../../components/OfflineCourseButton'
+
+# Cálculo para ML: Backpropagation
+
+> **Objetivo:** Completa los deliverables abajo antes de marcar este módulo como terminado.
+
+<ResourceTable rows={[
+  { tipo: 'Course', nombre: 'Karpathy: Yes you should understand backprop', url: 'https://karpathy.github.io/2016/09/26/backprop/', nota: 'Best visual + code breakdown of chain rule through computation graphs' },
+  { tipo: 'Book', nombre: 'Mathematics for Machine Learning (Deisenroth)', url: 'https://mml-book.github.io/', nota: 'Free PDF. Chapters 5-6 cover calculus for ML. Maps directly to autograd' },
+  { tipo: 'Code', nombre: 'micrograd (Andrej Karpathy)', url: 'https://github.com/karpathy/micrograd', nota: '~150 lines of Python. Full autograd engine + backprop from scratch' },
+  { tipo: 'Course', nombre: 'MIT 18.01/18.02 OCW', url: 'https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/', nota: 'Full calculus foundation. See also: [[mit-18-01-02-calculus]]' },
+]} />
+
+<OfflineCourseButton courseId="18.01" label="MIT 18.01 Single Variable Calculus" sizeBytes={391_000_000} />
+<OfflineCourseButton courseId="18.02" label="MIT 18.02 Multivariable Calculus" sizeBytes={337_000_000} />
+
+## Deliverables
+
+<DeliverableList moduleId="calculo-para-ml" items={[
+  'Deriva backprop para un MLP de 2 capas a mano (papel y pluma)',
+  'Implementa forward + backward pass en NumPy para MLP con ReLU + softmax',
+  'Verifica tus gradientes con gradient checking (diferencias finitas, error < 1e-5)',
+  'Implementa un autograd minimalista: clase Value con .backward()',
+  'Compara tu autograd contra PyTorch en la misma función, valida que coincidan',
+]} />
+
+<CheckpointCallout>
+Si tu gradient check falla (error relativo > 1e-5), hay un bug en tu backprop. No continúes hasta resolverlo.
+</CheckpointCallout>
+
+## Starter Code
+
+<InteractiveCodeBlock
+  title="Placeholder — reemplaza con tu primer ejercicio"
+  description="Cálculo para ML: Backpropagation"
+  code={`// TODO: starter code para Cálculo para ML: Backpropagation
+console.log('Módulo: Cálculo para ML: Backpropagation')
+`}
+/>
+
+{/* <!-- notebooklm-sync-start --> */}
+> NotebookLM module: `calculo-para-ml`
+> Last synced: 2026-05-05T09:23:42.434Z
+
+## NotebookLM Summary
+_No summary returned._
+
+## NotebookLM Q&A
+_No Q&A returned._
+{/* <!-- notebooklm-sync-end --> */}
+
+**Siguiente módulo:** [[csapp-memory]]

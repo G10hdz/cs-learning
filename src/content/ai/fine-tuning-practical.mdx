@@ -1,0 +1,269 @@
+---
+title: Fine-tuning Práctico — Modelos para Positronica Labs
+topic: ai
+difficulty: advanced
+timeEstimate: 6w
+tags:
+  - fine-tuning
+  - qlora
+  - unsloth
+  - positronica
+  - hypatia
+  - mlops
+  - dgx-spark
+phase: 4
+notebooklmModuleId: fine-tuning-practical
+---
+
+import ResourceTable from '../../components/ResourceTable'
+import CheckpointCallout from '../../components/CheckpointCallout'
+import DeliverableList from '../../components/DeliverableList'
+import InteractiveCodeBlock from '../../components/InteractiveCodeBlock'
+
+# Fine-tuning Práctico — Modelos para Positronica Labs
+
+> **Objetivo:** Crear modelos especializados reales usando datasets de los proyectos de Positronica Labs. Este módulo asume que completaste [[nlp-finetuning]].
+
+## Mapa de modelos objetivo
+
+| Modelo | Dataset fuente | Caso de uso | Prioridad |
+|---|---|---|---|
+| `positronica-hypatia-7b` | 6,570 Q&A UNAM (ya tienes esto) | CubPrep tutor adaptativo | 🔴 Primero |
+| `positronica-labor-mx-7b` | STPS docs, IMSS reglamentos | FairHire, KnowledgeVault | 🟡 Segundo |
+| `positronica-sop-extractor` | Manuales industriales | ManufactureIQ | 🟢 Tercero |
+| `positronica-ergane-scorer` | Job descriptions + scores | Ergane hybrid scoring | 🟢 Futuro |
+
+---
+
+## Proyecto 1: Hypatia Fine-tune (empieza aquí)
+
+### Por qué este primero
+- Dataset ya existe: `enhanced_explanations.json` con 6,570 pares Q&A + explicaciones detalladas
+- Formato limpio, dominio bien definido (UNAM admisión)
+- Métrica clara: accuracy en preguntas del examen
+- Resultado útil inmediatamente para Hypatia-public
+
+### Preparar el dataset
+
+```python
+import json
+import pandas as pd
+from datasets import Dataset
+
+# Cargar el dataset de Hypatia
+with open('/home/gio/Vscode-projects/Hypatia-public/CubPrep/enhanced_explanations.json') as f:
+    data = json.load(f)
+
+# Convertir a formato Alpaca
+def to_alpaca(item):
+    return {
+        "instruction": f"Responde esta pregunta del examen de admisión UNAM (materia: {item.get('materia', 'General')}):\n\n{item['pregunta']}",
+        "input": f"Opciones:\n" + "\n".join([f"{chr(65+i)}. {op}" for i, op in enumerate(item['opciones'])]),
+        "output": f"Respuesta: {item['respuesta_correcta']}\n\n{item.get('explicacion_correcta', '')}"
+    }
+
+alpaca_data = [to_alpaca(item) for item in data if item.get('explicacion_correcta')]
+print(f"Dataset: {len(alpaca_data)} ejemplos")
+
+dataset = Dataset.from_list(alpaca_data)
+dataset = dataset.train_test_split(test_size=0.1)
+```
+
+### Training con Unsloth (tu RX 6700 XT)
+
+```python
+from unsloth import FastLanguageModel
+from trl import SFTTrainer
+from transformers import TrainingArguments
+
+# Cargar modelo base — Qwen2.5-7B es el mejor para español
+model, tokenizer = FastLanguageModel.from_pretrained(
+    model_name="Qwen/Qwen2.5-7B-Instruct",
+    max_seq_length=2048,
+    dtype=None,           # Auto-detect
+    load_in_4bit=True,    # QLoRA — necesario para 12GB VRAM
+)
+
+# Aplicar LoRA
+model = FastLanguageModel.get_peft_model(
+    model,
+    r=16,                 # Rank — empieza con 16, sube a 32 si tienes VRAM
+    target_modules=["q_proj", "k_proj", "v_proj", "o_proj",
+                    "gate_proj", "up_proj", "down_proj"],
+    lora_alpha=32,
+    lora_dropout=0.05,
+    bias="none",
+    use_gradient_checkpointing="unsloth",  # Reduce VRAM ~30%
+)
+
+# Training
+trainer = SFTTrainer(
+    model=model,
+    tokenizer=tokenizer,
+    train_dataset=dataset["train"],
+    eval_dataset=dataset["test"],
+    dataset_text_field="text",   # necesita columna "text" formateada
+    max_seq_length=2048,
+    args=TrainingArguments(
+        per_device_train_batch_size=2,
+        gradient_accumulation_steps=4,    # batch efectivo = 8
+        warmup_steps=50,
+        num_train_epochs=3,
+        learning_rate=2e-4,
+        fp16=False,                       # ROCm: usa bf16 si disponible
+        bf16=True,
+        logging_steps=10,
+        optim="adamw_8bit",               # Ahorra VRAM
+        output_dir="./hypatia-checkpoints",
+        evaluation_strategy="steps",
+        eval_steps=100,
+        save_steps=200,
+    ),
+)
+
+trainer.train()
+model.save_pretrained("./positronica-hypatia-7b")
+```
+
+### Variables de entorno para ROCm
+
+```bash
+export HSA_OVERRIDE_GFX_VERSION=10.3.0
+export ROCR_VISIBLE_DEVICES=0
+export HIP_VISIBLE_DEVICES=0
+# Monitorear VRAM durante training:
+watch -n 1 rocm-smi
+```
+
+---
+
+## Proyecto 2: Modelo de Derecho Laboral Mexicano
+
+### Fuentes de datos
+```bash
+# Descargar documentos públicos
+# LFT (Ley Federal del Trabajo) — texto completo
+# Reglamento IMSS
+# Normas STPS (NOM-035, etc.)
+# Sentencias laborales públicas
+
+# Convertir PDFs a texto
+pip install pymupdf --break-system-packages
+python -c "
+import fitz
+doc = fitz.open('ley-federal-trabajo.pdf')
+text = '\n'.join([page.get_text() for page in doc])
+print(text[:500])
+"
+```
+
+### Estrategia de dataset
+- **Preguntas sintéticas**: usar Claude Sonnet para generar 500-1000 Q&A desde los documentos legales
+- **Formato**: ChatML (multi-turno, más natural para consultas legales)
+- **Validación**: abogada laboral revisa sample de 50 respuestas antes de publicar
+
+---
+
+## Evaluación de modelos de dominio
+
+```python
+# Benchmark personalizado para Hypatia
+def evaluate_hypatia(model, tokenizer, test_questions):
+    correct = 0
+    for q in test_questions:
+        prompt = f"Pregunta UNAM: {q['pregunta']}\nRespuesta:"
+        inputs = tokenizer(prompt, return_tensors="pt").to("cuda")
+        
+        with torch.no_grad():
+            output = model.generate(**inputs, max_new_tokens=50)
+        
+        predicted = tokenizer.decode(output[0], skip_special_tokens=True)
+        if q['respuesta_correcta'].lower() in predicted.lower():
+            correct += 1
+    
+    return correct / len(test_questions)
+
+accuracy = evaluate_hypatia(model, tokenizer, test_set)
+print(f"Accuracy: {accuracy:.1%}")  # Meta: >85% en examen UNAM
+```
+
+---
+
+## Roadmap de hardware para fine-tuning
+
+### Ahora (RX 6700 XT, 12GB VRAM)
+| Modelo | Técnica | VRAM | Tiempo/época |
+|---|---|---|---|
+| Qwen2.5-1.5B | QLoRA r=16 | ~4GB | ~5 min |
+| Qwen2.5-7B | QLoRA r=16 | ~10GB | ~45 min |
+| Qwen2.5-14B | ❌ OOM | >12GB | — |
+
+### Futuro (DGX Spark, 128GB unified)
+| Modelo | Técnica | VRAM | Tiempo/época |
+|---|---|---|---|
+| Qwen2.5-7B | Full fine-tune | ~30GB | ~15 min |
+| Qwen2.5-14B | LoRA r=64 | ~40GB | ~25 min |
+| Qwen2.5-72B | QLoRA r=32 | ~80GB | ~2h |
+| Llama3.3-70B | QLoRA r=16 | ~70GB | ~3h |
+
+**Por qué DGX Spark sobre RX 7900 XTX:**
+- 128GB unified vs 24GB VRAM — 5x más capacidad
+- CUDA = HuggingFace/Unsloth sin fricción ROCm
+- 300W TDP vs 355W (RX 7900 XTX) — ligeramente más eficiente para el compute
+- Justificado para entrenamiento + inference production
+
+---
+
+## Publicar en HuggingFace Hub
+
+```bash
+# Login
+pip install huggingface-hub --break-system-packages
+huggingface-cli login
+
+# Subir modelo
+from huggingface_hub import HfApi
+
+api = HfApi()
+api.create_repo("positronica-labs/hypatia-unam-7b", private=False)
+model.push_to_hub("positronica-labs/hypatia-unam-7b")
+tokenizer.push_to_hub("positronica-labs/hypatia-unam-7b")
+```
+
+Publicar bajo `positronica-labs/` en HuggingFace = portfolio técnico visible + SEO para la marca.
+
+---
+
+<ResourceTable rows={[
+  { tema: 'Unsloth notebooks', gratuito: 'github.com/unslothai/unsloth (Colab notebooks gratis)', deliverable: 'Correr el notebook de Qwen2.5 fine-tuning' },
+  { tema: 'LLaMA-Factory', gratuito: 'github.com/hiyouga/LLaMA-Factory', deliverable: 'Configurar training con YAML config para Qwen' },
+  { tema: 'Axolotl', gratuito: 'github.com/OpenAccess-AI-Collective/axolotl', deliverable: 'Entender cuándo Axolotl > Unsloth' },
+  { tema: 'HuggingFace TRL docs', gratuito: 'huggingface.co/docs/trl', deliverable: 'Entender SFTTrainer vs DPOTrainer' },
+  { tema: 'W&B experiment tracking', gratuito: 'wandb.ai (free tier)', deliverable: 'Loggear loss curves de tu primer fine-tune real' },
+]} />
+
+## Deliverables
+
+<DeliverableList moduleId="fine-tuning-practical" items={[
+  'Preparar dataset Hypatia en formato Alpaca (script de conversión desde enhanced_explanations.json)',
+  'Entrenar Qwen2.5-7B con QLoRA en dataset Hypatia — lograr al menos 1 época completa sin OOM',
+  'Medir accuracy del modelo en set de prueba — baseline vs fine-tuneado',
+  'Documentar VRAM usage, tiempo de entrenamiento, métricas de loss en W&B',
+  'Crear dataset inicial de 100 Q&A de derecho laboral mexicano (LFT) con Claude Sonnet',
+  'Publicar positronica-labs/hypatia-unam-7b en HuggingFace Hub (aunque sea experimental)',
+  'Escribir una entrada técnica para LinkedIn sobre el proceso — evidencia de aprendizaje',
+]} />
+
+<CheckpointCallout>
+Si tu modelo fine-tuneado no supera al base model en accuracy UNAM, el problema es el dataset (calidad/cantidad), no el training. Itera en los datos antes de cambiar hiperparámetros.
+</CheckpointCallout>
+
+{/* <!-- notebooklm-sync-start --> */}
+> NotebookLM module: `fine-tuning-practical`
+
+## NotebookLM Q&A
+- **Q:** ¿Cuál es el concepto más importante de este módulo?
+  **A:** (Pendiente de sincronización — ejecuta `npm run sync`)
+{/* <!-- notebooklm-sync-end --> */}
+
+**Siguiente módulo:** [[mlops-advanced]]

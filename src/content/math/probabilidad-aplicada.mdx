@@ -1,0 +1,63 @@
+---
+title: Probabilidad Aplicada para ML
+topic: math
+difficulty: intermediate
+timeEstimate: 3w
+tags:
+  - probability
+  - statistics
+  - mle
+  - bayesian
+  - numpy
+phase: 1
+notebooklmModuleId: probabilidad-aplicada
+---
+
+import ResourceTable from '../../components/ResourceTable'
+import CheckpointCallout from '../../components/CheckpointCallout'
+import DeliverableList from '../../components/DeliverableList'
+import InteractiveCodeBlock from '../../components/InteractiveCodeBlock'
+
+# Probabilidad Aplicada para ML
+
+> **Objetivo:** Completa los deliverables abajo antes de marcar este módulo como terminado.
+
+<ResourceTable rows={[
+  { tipo: 'Course', nombre: 'MIT 6.041SC — Probabilistic Systems', url: 'https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-041sc-probabilistic-systems-analysis-and-applied-probability-fall-2013/', nota: 'Free. Applied focus. Covers Bayes, MLE, KL with engineering examples' },
+  { tipo: 'Book', nombre: 'Think Stats (Allen Downey)', url: 'https://greenteapress.com/thinkstats2/', nota: 'Free PDF. Python-first. Explains MLE/MAP with code, not measure theory' },
+  { tipo: 'Code', nombre: 'scikit-learn Naive Bayes source', url: 'https://github.com/scikit-learn/scikit-learn/tree/main/sklearn/naive_bayes.py', nota: 'Read production Bayes code. Pair with ML-From-Scratch for full loop' },
+]} />
+
+## Deliverables
+
+<DeliverableList moduleId="probabilidad-aplicada" items={[
+  'Simula distribuciones Gaussiana, Binomial, Poisson desde cero con NumPy',
+  'Implementa MLE para regresión logística (sin sklearn)',
+  'Implementa MAP inference con prior Gaussiano sobre los pesos',
+  'Calcula KL divergence entre dos distribuciones Gaussianas, valida vs scipy',
+  'Demuestra el teorema de Bayes aplicado a clasificación de spam (Naive Bayes)',
+]} />
+
+<CheckpointCallout>
+Si no puedes derivar el estimador MLE para regresión logística a mano (sin mirar notas), repite este módulo.
+</CheckpointCallout>
+
+## Starter Code
+
+<InteractiveCodeBlock
+  title="Placeholder — reemplaza con tu primer ejercicio"
+  description="Probabilidad Aplicada para ML"
+  code={`// TODO: starter code para Probabilidad Aplicada para ML
+console.log('Módulo: Probabilidad Aplicada para ML')
+`}
+/>
+
+{/* <!-- notebooklm-sync-start --> */}
+> NotebookLM module: `probabilidad-aplicada`
+
+## NotebookLM Q&A
+- **Q:** ¿Cuál es el concepto más importante de este módulo?
+  **A:** (Pendiente de sincronización — ejecuta `npm run sync`)
+{/* <!-- notebooklm-sync-end --> */}
+
+**Siguiente módulo:** [[algebra-lineal-numerica]]

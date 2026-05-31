@@ -1,0 +1,64 @@
+---
+title: Álgebra Lineal Numérica para ML
+topic: math
+difficulty: intermediate
+timeEstimate: 3w
+tags:
+  - linear-algebra
+  - svd
+  - pca
+  - ridge
+  - numpy
+phase: 1
+notebooklmModuleId: algebra-lineal-numerica
+---
+
+import ResourceTable from '../../components/ResourceTable'
+import CheckpointCallout from '../../components/CheckpointCallout'
+import DeliverableList from '../../components/DeliverableList'
+import InteractiveCodeBlock from '../../components/InteractiveCodeBlock'
+
+# Álgebra Lineal Numérica para ML
+
+> **Objetivo:** Completa los deliverables abajo antes de marcar este módulo como terminado.
+
+<ResourceTable rows={[
+  { tipo: 'Course', nombre: 'MIT 18.065 — Matrix Methods (Strang)', url: 'https://ocw.mit.edu/courses/18-065-matrix-methods-in-data-analysis-signal-processing-and-machine-learning-spring-2018/', nota: 'Strang applied focus. SVD/PCA for ML, not pure theory. Free videos' },
+  { tipo: 'Book', nombre: 'MML Book: PCA & Regularization (Deisenroth)', url: 'https://mml-book.github.io/', nota: 'Free PDF. Clear derivations + geometric intuition for SVD/PCA/ridge' },
+  { tipo: 'Code', nombre: 'ML-From-Scratch — PCA + Ridge', url: 'https://github.com/eriklindernoren/ML-From-Scratch/tree/master/ml_from_scratch', nota: 'NumPy SVD/PCA/ridge. Matches lecture math line-by-line' },
+  { tipo: 'Video', nombre: '3Blue1Brown — Essence of Linear Algebra', url: 'https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab', nota: 'Visual intuition before diving into proofs' },
+]} />
+
+## Deliverables
+
+<DeliverableList moduleId="algebra-lineal-numerica" items={[
+  'Implementa SVD desde cero con power iteration (sin numpy.linalg.svd)',
+  'Implementa PCA usando tu SVD, compara proyecciones con sklearn',
+  'Implementa regresión ridge (L2) y analiza el efecto de λ en los valores singulares',
+  'Mide número de condición κ de matrices mal condicionadas y explica su impacto numérico',
+  'Explica por qué SVD es más estable numéricamente que eigendecomposition directa',
+]} />
+
+<CheckpointCallout>
+Si no puedes implementar PCA usando SVD sin referencias externas en 30 minutos, repite.
+</CheckpointCallout>
+
+## Starter Code
+
+<InteractiveCodeBlock
+  title="Placeholder — reemplaza con tu primer ejercicio"
+  description="Álgebra Lineal Numérica para ML"
+  code={`// TODO: starter code para Álgebra Lineal Numérica para ML
+console.log('Módulo: Álgebra Lineal Numérica para ML')
+`}
+/>
+
+{/* <!-- notebooklm-sync-start --> */}
+> NotebookLM module: `algebra-lineal-numerica`
+
+## NotebookLM Q&A
+- **Q:** ¿Cuál es el concepto más importante de este módulo?
+  **A:** (Pendiente de sincronización — ejecuta `npm run sync`)
+{/* <!-- notebooklm-sync-end --> */}
+
+**Siguiente módulo:** [[calculo-para-ml]]

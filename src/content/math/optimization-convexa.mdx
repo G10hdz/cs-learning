@@ -1,0 +1,77 @@
+---
+title: Optimización Convexa para ML
+topic: math
+difficulty: intermediate
+timeEstimate: 3w
+tags:
+  - optimization
+  - convex
+  - gradient-descent
+  - adam
+  - numpy
+phase: 1
+---
+
+import ResourceTable from '../../components/ResourceTable'
+import CheckpointCallout from '../../components/CheckpointCallout'
+import DeliverableList from '../../components/DeliverableList'
+import InteractiveCodeBlock from '../../components/InteractiveCodeBlock'
+
+# Optimización Convexa para ML
+
+Implementa SGD, Newton y Adam desde cero — la única forma de entender por qué convergen diferente en superficies no-convexas.
+
+<ResourceTable rows={[
+  { tipo: 'Course', nombre: 'Stanford EE364A — Convex Optimization', url: 'https://stanford.edu/~boyd/ee364a/', nota: 'Lectures + exercises. Covers convergence proofs + practical optimizer behavior. Free' },
+  { tipo: 'Book', nombre: 'Convex Optimization (Boyd & Vandenberghe)', url: 'https://web.stanford.edu/~boyd/cvxbook/', nota: 'Free PDF. Definitive reference. Chapters 9-10 map directly to GD/Newton/Adam' },
+  { tipo: 'Code', nombre: 'ML-From-Scratch — Optimizers', url: 'https://github.com/eriklindernoren/ML-From-Scratch/tree/master/ml_from_scratch/deep_learning', nota: 'GD, Momentum, Adam in NumPy. Clear convergence logs' },
+]} />
+
+## Deliverables
+
+<DeliverableList moduleId="optimization-convexa" items={[
+  'Implementa gradient descent (GD) en NumPy con learning rate fijo y schedule',
+  'Implementa Newton method con backtracking line search (Armijo condition)',
+  'Implementa Adam optimizer desde cero — mismos hiperparámetros por defecto que PyTorch',
+  'Benchmark: compara convergencia GD vs Adam en f(x)=x⁴-3x³ (no-convexa, saddle point)',
+  'Escribe las ecuaciones de m̂_t y v̂_t de memoria y explica el bias correction',
+]} />
+
+<CheckpointCallout>
+Si no puedes explicar matemáticamente por qué Adam converge más rápido que SGD en un caso no-convexo, repite este módulo. La intuición visual no basta — escribe las ecuaciones de actualización completas y señala dónde actúa el momentum y la corrección de varianza.
+</CheckpointCallout>
+
+## Starter Code
+
+<InteractiveCodeBlock
+  title="Adam optimizer from scratch"
+  description="Misma lógica que NumPy/JAX, en JS puro para correrlo aquí."
+  code={`// Adam — Kingma & Ba 2014
+function adam(grad, x, state, lr=0.001, b1=0.9, b2=0.999, eps=1e-8) {
+  state.t = (state.t || 0) + 1
+  state.m = b1 * (state.m || 0) + (1 - b1) * grad
+  state.v = b2 * (state.v || 0) + (1 - b2) * grad * grad
+  const mHat = state.m / (1 - Math.pow(b1, state.t))
+  const vHat = state.v / (1 - Math.pow(b2, state.t))
+  return x - lr * mHat / (Math.sqrt(vHat) + eps)
+}
+
+// Minimize f(x) = x^4 - 3x^3  (non-convex, has saddle near x=0)
+let x = 10.0, state = {}, log = []
+for (let i = 0; i < 500; i++) {
+  const grad = 4 * Math.pow(x, 3) - 9 * Math.pow(x, 2)
+  x = adam(grad, x, state)
+  if (i % 100 === 0) log.push(\`t=\${i} x=\${x.toFixed(4)}\`)
+}
+return log.join('\\n') + \`\\nFinal x ≈ \${x.toFixed(6)} (local min near x=2.25)\``}
+/>
+
+{/* <!-- notebooklm-sync-start --> */}
+> NotebookLM module: `optimization-convexa`
+
+## NotebookLM Q&A
+- **Q:** ¿Por qué Adam converge más rápido que SGD en superficies no-convexas?
+  **A:** Adam mantiene estimaciones adaptativas por parámetro: m_t (primer momento, momentum) suaviza la dirección, v_t (segundo momento) escala el learning rate inversamente a la magnitud de los gradientes históricos. Donde el gradiente es ruidoso/pequeño, Adam da pasos proporcionales — SGD da el mismo paso fijo y se atasca o diverge.
+{/* <!-- notebooklm-sync-end --> */}
+
+**Siguiente módulo:** [[probabilidad-aplicada]]

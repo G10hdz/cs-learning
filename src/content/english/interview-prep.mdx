@@ -1,0 +1,151 @@
+---
+title: Interview Prep
+topic: english
+difficulty: intermediate
+timeEstimate: 2w
+tags:
+  - english
+  - interview
+  - behavioral
+  - technical
+studyTool: notebooklm
+notebooklmModuleId: interview-prep
+---
+
+# Interview Prep
+
+> **Objetivo:** Practicar entrevistas técnicas y de comportamiento (STAR method) en inglés fluido. Confianza para entrevistas FAANG-tier sin que el idioma sea el limitante.
+
+## Objetivos de aprendizaje
+
+- Dominar STAR method para behavioral questions — 10 respuestas preparadas, 3 improvisadas
+- Explicar conceptos técnicos complejos en inglés simple y claro (system design, algoritmos)
+- Manejar follow-up questions sin congelarse — transiciones naturales, clarificación
+- Proyectar confianza y competencia en inglés aunque tengas acento (el acento no es problema)
+- Completar 3 mock interviews grabadas con autoevaluación
+
+## Conceptos clave
+
+### STAR Method Framework
+
+```
+S — Situation:  Contexto breve (1-2 frases). ¿Dónde, cuándo, con quién?
+T — Task:       ¿Cuál era tu responsabilidad? ¿Qué problema había que resolver?
+A — Action:     ¿Qué hiciste TÚ específicamente? Verbos de acción: I designed, I led, I implemented...
+R — Result:     Resultado cuantificable. Números, métricas, impacto.
+```
+
+**Ejemplo STAR completo:**
+
+> **S:** "In my previous role at Acme Corp, we had a microservice that was timing out under peak load."
+> **T:** "I needed to identify the bottleneck and reduce p99 latency below 200ms."
+> **A:** "I profiled the service with pprof, found a hot path in the serialization layer. I rewrote it using zero-copy deserialization, added a connection pool, and set up load testing with k6."
+> **R:** "p99 latency dropped from 850ms to 120ms. The service handled 3x peak traffic without additional instances. This saved ~$4k/month in compute."
+
+### Behavioral Question Categories
+
+| Categoría | Pregunta típica | Lo que buscan |
+|-----------|----------------|---------------|
+| Leadership | "Tell me about a time you led a project" | Ownership, initiative, influence |
+| Conflict | "Tell me about a disagreement with a coworker" | Communication, maturity, resolution |
+| Failure | "Tell me about a time you failed" | Self-awareness, learning, resilience |
+| Challenge | "What's the hardest technical problem you've solved?" | Depth, problem-solving, persistence |
+| Teamwork | "Tell me about working on a cross-functional team" | Collaboration, communication, empathy |
+| Innovation | "Tell me about something you built from scratch" | Creativity, drive, technical skill |
+
+### Technical Explanation — The ELI5 Rule
+
+Si no puedes explicar un concepto técnico a un non-engineer en 2 minutos, no lo entiendes bien.
+
+```
+MAL: "The system uses a distributed consensus protocol based on Raft
+      with leader election and log replication across quorum."
+
+BIEN: "Imagine 5 people need to agree on a decision. One person is the
+       leader — they propose the decision. If at least 3 out of 5 agree,
+       the decision is final. If the leader disappears, the remaining 4
+       elect a new leader. That's how our system keeps data consistent
+       across multiple servers."
+```
+
+### Transitional Phrases for Thinking Time
+
+Cuando necesitas 3 segundos para pensar, usa estas frases en vez de "uhhh":
+
+| Frase | Cuándo usarla |
+|-------|--------------|
+| "That's a great question. Let me think about that for a moment." | Pregunta compleja |
+| "Let me break that down." | Problema multi-parte |
+| "I'd approach this from two angles." | Comparación/trade-off |
+| "Can you clarify what you mean by...?" | Pregunta ambigua |
+| "To put it concretely..." | Transición a ejemplo |
+| "The way I think about this is..." | Explicación conceptual |
+
+## Estrategia (2 semanas)
+
+**Semana 1 — Behavioral prep**
+- Día 1-2: Escribir 10 historias STAR (2 por categoría) — borrador en bullet points
+- Día 3-4: Practicar en voz alta cada historia — grabar, escuchar, re-grabar (x3 cada una)
+- Día 5: Practicar follow-up questions con NotebookLM — que te haga preguntas sobre tus historias
+- Día 6: Mock interview behavioral completa (30 min) — grabar y autoevaluar
+- Día 7: Refinar tus 3 mejores historias — timing, claridad, impacto
+
+**Semana 2 — Technical communication + mocks**
+- Día 8-9: Explicar 5 conceptos técnicos en 2 min cada uno — grabar, eliminar muletillas
+- Día 10: System design walkthrough en inglés (ej: "Design a URL shortener") — hablar mientras dibujas
+- Día 11: Coding problem + explain your thinking out loud (ej: LeetCode medium)
+- Día 12: Mock interview técnica completa (45 min) — grabar
+- Día 13: Analizar grabación — identificar 3 áreas de mejora
+- Día 14: Mock interview final — behavioral + technical — objetivo: fluidez sin pausas largas
+
+## Recursos
+
+| Recurso | Tipo | Link |
+|---|---|---|
+| Tech Interview Handbook | Guía behavioral + técnica | [techinterviewhandbook.org](https://www.techinterviewhandbook.org/behavioral-interview/) |
+| yangshun/tech-interview-handbook | GitHub | [GitHub](https://github.com/yangshun/tech-interview-handbook) |
+| Full Mock Interview | Video ejemplo | [YouTube](https://www.youtube.com/watch?v=1qw5ITr3k9E) |
+| interviewing.io | Mock interviews gratis con engineers reales | [interviewing.io](https://interviewing.io) |
+| Pramp | Peer mock interviews | [pramp.com](https://www.pramp.com) |
+| Exponent | System design + behavioral | [tryexponent.com](https://www.tryexponent.com) |
+
+## Deliverables
+
+- [ ] 10 respuestas STAR escritas (borrador bullet points)
+- [ ] 3 historias STAR pulidas — ≤2 min cada una, con métricas
+- [ ] 5 conceptos técnicos explicados en ≤2 min (ELI5 rule) — grabados
+- [ ] 1 mock interview behavioral grabada (30 min)
+- [ ] 1 mock interview técnica grabada (45 min)
+- [ ] Quiz de vocabulario de entrevista en NotebookLM — 80%+
+
+## Prompts para NotebookLM
+
+```
+1. Hazme una mock behavioral interview — 5 preguntas, yo respondo en inglés, tú me das feedback sobre estructura STAR y claridad
+2. Dame 10 follow-up questions típicas para mis respuestas STAR — practiquemos el back-and-forth
+3. Explícame la diferencia entre "tell me about a time you failed" y "what's your greatest weakness" — ¿qué busca el interviewer en cada una?
+4. Simula una system design interview: "Design a URL shortener like bit.ly" — yo explico mi approach, tú haces follow-up questions como interviewer real
+5. Dame feedback sobre esta respuesta: [pega tu respuesta STAR aquí] — ¿es clara? ¿tiene métricas? ¿suena natural?
+6. ¿Cuáles son los 10 phrasal verbs más importantes para sonar natural en una entrevista técnica?
+7. Genera un quiz de vocabulario de entrevista: yo defino el término en inglés, tú verificas
+```
+
+## Siguiente fase
+
+- [ ] 10 respuestas STAR pulidas con métricas
+- [ ] 3 mock interviews grabadas y analizadas
+- [ ] Transiciones naturales — cero "uhhh", cero pausas largas
+- [ ] Vocabulario de entrevista 80%+
+
+**Siguiente módulo:** [[pr-comments]]
+
+{/* <!-- notebooklm-sync-start --> */}
+> NotebookLM module: `interview-prep`
+> Last synced: 2026-05-05T09:20:37.738Z
+
+## NotebookLM Summary
+_No summary returned._
+
+## NotebookLM Q&A
+_No Q&A returned._
+{/* <!-- notebooklm-sync-end --> */}

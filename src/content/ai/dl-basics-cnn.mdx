@@ -1,0 +1,54 @@
+---
+title: "Deep Learning Básico: CNNs"
+topic: ai
+difficulty: intermediate
+timeEstimate: 4w
+tags:
+  - deep-learning
+  - cnn
+  - mnist
+  - pytorch
+  - numpy
+phase: 2
+---
+
+import ResourceTable from '../../components/ResourceTable'
+import CheckpointCallout from '../../components/CheckpointCallout'
+import DeliverableList from '../../components/DeliverableList'
+import InteractiveCodeBlock from '../../components/InteractiveCodeBlock'
+
+# Deep Learning Básico: CNNs
+
+> **Objetivo:** Completa los deliverables abajo antes de marcar este módulo como terminado.
+
+<ResourceTable rows={[
+  { tipo: 'Course', nombre: 'Stanford CS231n — Visual Recognition', url: 'https://cs231n.github.io/', nota: 'Assignments 2 & 3 force NumPy backprop/CNN/BatchNorm from scratch. Zero hand-waving' },
+  { tipo: 'Book', nombre: 'Neural Networks and Deep Learning (Michael Nielsen)', url: 'http://neuralnetworksanddeeplearning.com/', nota: 'Free. Best intuitive breakdown of backprop + computation graphs' },
+  { tipo: 'Code', nombre: 'CS231n Assignments — Official specs', url: 'https://github.com/cs231n/cs231n.github.io', nota: 'Lab notebooks. You fill in forward/backward passes. Matches syllabus exactly' },
+]} />
+
+## Deliverables
+
+<DeliverableList moduleId="dl-basics-cnn" items={[
+  'Implementa CNN para MNIST sin frameworks (NumPy puro): conv2d, maxpool, backprop',
+  'Reimplementa en PyTorch, valida que los outputs coincidan con tu versión NumPy',
+  'Experimenta con batch norm: mide impacto en velocidad de convergencia',
+  'Implementa data augmentation manual (flip, crop, noise) para regularización',
+  'Alcanza >99% accuracy en MNIST con tu implementación PyTorch',
+]} />
+
+<CheckpointCallout>
+Si tu CNN NumPy no pasa gradient check, hay un bug en tu backprop de convolución. No uses PyTorch hasta resolver.
+</CheckpointCallout>
+
+## Starter Code
+
+<InteractiveCodeBlock
+  title="Placeholder — reemplaza con tu primer ejercicio"
+  description="Deep Learning Básico: CNNs"
+  code={`// TODO: starter code para Deep Learning Básico: CNNs
+console.log('Módulo: Deep Learning Básico: CNNs')
+`}
+/>
+
+**Siguiente módulo:** [[mlops-intro]]

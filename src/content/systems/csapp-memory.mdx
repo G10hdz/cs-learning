@@ -1,0 +1,55 @@
+---
+title: "CS:APP — Memory & Systems"
+topic: systems
+difficulty: advanced
+timeEstimate: 4w
+tags:
+  - c
+  - memory
+  - allocator
+  - cache
+  - systems
+phase: 2
+---
+
+import ResourceTable from '../../components/ResourceTable'
+import CheckpointCallout from '../../components/CheckpointCallout'
+import DeliverableList from '../../components/DeliverableList'
+import InteractiveCodeBlock from '../../components/InteractiveCodeBlock'
+
+# CS:APP — Memory & Systems
+
+> **Objetivo:** Completa los deliverables abajo antes de marcar este módulo como terminado.
+
+<ResourceTable rows={[
+  { tipo: 'Course', nombre: 'CMU 15-213 — Intro to Computer Systems', url: 'https://csapp.cs.cmu.edu/', nota: 'Lectures + labs. Covers cache, memory, and the exact malloc lab you need' },
+  { tipo: 'Book', nombre: 'CS:APP 3rd Edition (Bryant & O\'Hallaron)', url: 'local:/Bryant, Randal E_O\'Hallaron, David R - Computer Systems_ A Programmer\'s Perspective (2015, Pearson) - libgen.li.pdf', nota: 'PDF in project root. Ch 6 (memory hierarchy), Ch 9 (virtual memory) are core' },
+  { tipo: 'Book', nombre: 'The Linux Programming Interface (Kerrisk)', url: 'local:/Michael Kerrisk - The Linux Programming Interface - libgen.li.pdf', nota: 'PDF in project root. Ch 7 (memory allocation), Ch 49-52 (shared memory/mmap)' },
+  { tipo: 'Code', nombre: 'CMU Malloc Lab — Spec + Reference', url: 'https://csapp.cs.cmu.edu/3e/malloclab.html', nota: 'Build a production-grade allocator. Tests measure speed + fragmentation' },
+]} />
+
+## Deliverables
+
+<DeliverableList moduleId="csapp-memory" items={[
+  'Escribe un memory allocator simple en C (malloc/free con free list)',
+  'Mide overhead vs glibc malloc en 1M allocations de tamaños variados',
+  'Explica cache hierarchy (L1/L2/L3) y cómo afecta inference latency',
+  'Implementa matrix multiply con loop tiling para maximizar cache hits',
+  'Mide bandwidth de memoria con un benchmark de streaming (STREAM-like)',
+]} />
+
+<CheckpointCallout>
+Si no puedes explicar por qué un matmul naive es cache-unfriendly y cómo arreglarlo con tiling, repite.
+</CheckpointCallout>
+
+## Starter Code
+
+<InteractiveCodeBlock
+  title="Placeholder — reemplaza con tu primer ejercicio"
+  description="CS:APP — Memory & Systems"
+  code={`// TODO: starter code para CS:APP — Memory & Systems
+console.log('Módulo: CS:APP — Memory & Systems')
+`}
+/>
+
+**Siguiente módulo:** [[os-concurrency]]

@@ -1,0 +1,207 @@
+---
+title: Fine-tuning LLMs — LoRA, QLoRA y PEFT
+topic: ai
+difficulty: advanced
+timeEstimate: 5w
+tags:
+  - nlp
+  - fine-tuning
+  - lora
+  - qlora
+  - huggingface
+  - peft
+  - unsloth
+phase: 3
+notebooklmModuleId: nlp-finetuning
+---
+
+import ResourceTable from '../../components/ResourceTable'
+import CheckpointCallout from '../../components/CheckpointCallout'
+import DeliverableList from '../../components/DeliverableList'
+import InteractiveCodeBlock from '../../components/InteractiveCodeBlock'
+
+# Fine-tuning LLMs — LoRA, QLoRA y PEFT
+
+> **Objetivo:** Entender y aplicar fine-tuning eficiente en LLMs para crear modelos especializados con recursos limitados. Base para los modelos de dominio de Positronica Labs.
+
+## Por qué importa esto
+
+El fine-tuning transforma un LLM genérico en un especialista. Para Positronica:
+- Modelo para derecho laboral mexicano (FairHire / ManufactureIQ)
+- Extractor de SOPs industriales (KnowledgeVault)
+- Tutor adaptativo para examen UNAM (Hypatia — ya tienes 6,570 pares Q&A listos)
+
+Ventaja competitiva real: un modelo afinado en datos privados no puede ser replicado fácilmente.
+
+---
+
+## Conceptos core
+
+### Full fine-tuning vs PEFT
+
+| Approach | VRAM needed | Params trained | Use when |
+|---|---|---|---|
+| Full fine-tuning | ~80GB para 7B | 100% | Tienes DGX Spark / A100 |
+| LoRA | ~16GB para 7B | 0.1–1% | GPU consumer, calidad alta |
+| QLoRA | ~6–10GB para 7B | 0.1–1% | Tu RX 6700 XT (12GB) ahora |
+| Adapter layers | ~8GB para 7B | &lt;0.1% | Cambios muy pequeños |
+
+### LoRA — Low-Rank Adaptation
+
+En lugar de actualizar `W` (matriz de pesos original), LoRA aprende dos matrices pequeñas `A` y `B`:
+
+```python
+# En lugar de actualizar W (d×d), LoRA aprende:
+# ΔW = B × A    donde B es d×r y A es r×d, con r << d
+# Ejemplo: d=4096, r=16 → 4096² = 16M params vs 2×4096×16 = 131K params
+# Reducción: ~122x menos parámetros entrenables
+```
+
+**Hiperparámetros clave:**
+- `r` (rank): 8–64. Más alto = más capacidad, más VRAM
+- `lora_alpha`: escala de LoRA, típicamente `2*r`
+- `target_modules`: qué capas afectar (`q_proj`, `v_proj`, `k_proj`, `o_proj`)
+- `lora_dropout`: regularización, 0.05–0.1
+
+### QLoRA — Quantized LoRA
+
+Cuantiza los pesos base a 4-bit (NF4), aplica LoRA encima. Permite fine-tuning de 7B en 6GB VRAM.
+
+```python
+from transformers import BitsAndBytesConfig
+import torch
+
+bnb_config = BitsAndBytesConfig(
+    load_in_4bit=True,
+    bnb_4bit_quant_type="nf4",        # NormalFloat4 — mejor para LLMs
+    bnb_4bit_compute_dtype=torch.bfloat16,
+    bnb_4bit_use_double_quant=True,   # Double quantization — ahorra ~0.4 bits/param
+)
+```
+
+---
+
+## Formatos de dataset
+
+### Alpaca (instruction-tuning)
+```json
+{
+  "instruction": "Explica qué es el IMSS en México",
+  "input": "",
+  "output": "El IMSS (Instituto Mexicano del Seguro Social) es..."
+}
+```
+
+### ShareGPT / ChatML (conversacional)
+```json
+{
+  "conversations": [
+    {"from": "human", "value": "¿Qué dice el artículo 123 constitucional?"},
+    {"from": "gpt", "value": "El artículo 123 establece los derechos laborales..."}
+  ]
+}
+```
+
+### Cuándo usar cada uno
+- Alpaca: Q&A directa, extracción, clasificación
+- ShareGPT: chat, razonamiento multi-turno, asistentes
+
+---
+
+## Stack de herramientas
+
+### Unsloth (recomendado para empezar)
+- 2x más rápido que HuggingFace vanilla
+- 60% menos VRAM
+- API simple, funciona con QLoRA
+
+```bash
+pip install unsloth --break-system-packages
+# ROCm: pip install unsloth[rocm] --break-system-packages
+```
+
+### Axolotl (producción)
+- Config YAML en lugar de código
+- Multi-GPU, curriculum learning, DPO
+- Mejor para cuando escales
+
+### LLaMA-Factory
+- Mejor soporte para modelos chinos/multilingüe (Qwen, DeepSeek)
+- UI web incluida
+- Ideal para Qwen2.5 en español
+
+---
+
+## Setup en tu máquina actual (RX 6700 XT / ROCm)
+
+```bash
+# Verificar ROCm
+rocm-smi
+
+# Instalar PyTorch con ROCm 6.x
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.0 --break-system-packages
+
+# Instalar PEFT y TRL
+pip install peft trl transformers datasets --break-system-packages
+
+# Variables de entorno para ROCm
+export HSA_OVERRIDE_GFX_VERSION=10.3.0   # Para RX 6700 XT (gfx1031)
+export ROCR_VISIBLE_DEVICES=0
+```
+
+**Limitación actual:** QLoRA en modelos hasta 7B. Para 13B+ necesitas DGX Spark.
+
+---
+
+## Evaluación
+
+No basta con que el modelo "suene bien". Métricas:
+
+| Tarea | Métrica | Herramienta |
+|---|---|---|
+| Q&A factual | Exact Match, F1 | `evaluate` de HuggingFace |
+| Generación texto | ROUGE-L, BERTScore | `evaluate` |
+| Instrucciones | Win rate vs base model | MT-Bench, LLM-as-judge |
+| Dominio específico | Task-specific benchmark | Manual o custom |
+
+```bash
+# LM Evaluation Harness
+pip install lm-eval --break-system-packages
+lm_eval --model hf --model_args pretrained=./my-finetuned-model --tasks arc_easy
+```
+
+---
+
+<ResourceTable rows={[
+  { tema: 'LoRA original paper', gratuito: 'arxiv.org/abs/2106.09685', deliverable: 'Leer y entender la matemática de descomposición de rango bajo' },
+  { tema: 'QLoRA paper', gratuito: 'arxiv.org/abs/2305.14314', deliverable: 'Entender NF4 quantization y doble cuantización' },
+  { tema: 'Unsloth docs', gratuito: 'docs.unsloth.ai', deliverable: 'Correr notebook de fine-tuning en tu máquina' },
+  { tema: 'DeepLearning.ai Fine-tuning course', gratuito: 'learn.deeplearning.ai (gratis)', deliverable: 'Completar el curso corto práctico' },
+  { tema: 'HuggingFace PEFT docs', gratuito: 'huggingface.co/docs/peft', deliverable: 'Entender LoraConfig y PeftModel API' },
+]} />
+
+## Deliverables
+
+<DeliverableList moduleId="nlp-finetuning" items={[
+  'Leer el paper LoRA completo — entender la matemática de ΔW = B×A',
+  'Leer el paper QLoRA — entender NF4 quantization',
+  'Correr el DeepLearning.ai fine-tuning course (corto, gratis)',
+  'Fine-tunea Qwen2.5-1.5B en 50 ejemplos con Unsloth (cualquier dataset de prueba)',
+  'Mide VRAM usage durante training — anota el baseline para RX 6700 XT',
+  'Implementa LoRA desde cero en NumPy: matrices A y B, forward pass con ΔW = B×A',
+  'Documenta: ¿cuándo fine-tuning supera RAG? ¿cuándo RAG es mejor?',
+]} />
+
+<CheckpointCallout>
+Si no puedes explicar la diferencia entre LoRA rank 8 vs rank 64 y cuándo usar cada uno, repite los papers.
+</CheckpointCallout>
+
+{/* <!-- notebooklm-sync-start --> */}
+> NotebookLM module: `nlp-finetuning`
+
+## NotebookLM Q&A
+- **Q:** ¿Cuál es el concepto más importante de este módulo?
+  **A:** (Pendiente de sincronización — ejecuta `npm run sync`)
+{/* <!-- notebooklm-sync-end --> */}
+
+**Siguiente módulo:** [[fine-tuning-practical]]

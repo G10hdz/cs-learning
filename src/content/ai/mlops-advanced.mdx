@@ -1,0 +1,54 @@
+---
+title: "MLOps Avanzado: CI/CD + Drift"
+topic: ai
+difficulty: advanced
+timeEstimate: 3w
+tags:
+  - mlops
+  - mlflow
+  - drift
+  - cicd
+  - monitoring
+phase: 3
+---
+
+import ResourceTable from '../../components/ResourceTable'
+import CheckpointCallout from '../../components/CheckpointCallout'
+import DeliverableList from '../../components/DeliverableList'
+import InteractiveCodeBlock from '../../components/InteractiveCodeBlock'
+
+# MLOps Avanzado: CI/CD + Drift
+
+> **Objetivo:** Completa los deliverables abajo antes de marcar este módulo como terminado.
+
+<ResourceTable rows={[
+  { tipo: 'Course', nombre: 'Stanford CS329S — ML Systems Design', url: 'https://stanford-cs329s.github.io/', nota: 'Lectures 7-11 cover drift, A/B, monitoring, CI/CD. Free slides + design templates' },
+  { tipo: 'Book', nombre: 'Machine Learning Systems Design (Chip Huyen)', url: 'https://huyenchip.com/machine-learning-systems-design/', nota: 'Free draft. Pragmatic, anti-hype. Maps drift/A-B to business constraints' },
+  { tipo: 'Code', nombre: 'MLflow + DTC MLOps Zoomcamp Mod 4-5', url: 'https://github.com/DataTalksClub/mlops-zoomcamp/tree/main/04-experiment-tracking', nota: 'Real MLflow tracking + drift detection notebooks. Community-maintained' },
+]} />
+
+## Deliverables
+
+<DeliverableList moduleId="mlops-advanced" items={[
+  'Implementa CI/CD para retraining automático con MLflow + GitHub Actions',
+  'Implementa detección de drift estadístico (KS test, PSI) en producción',
+  'Configura alertas: notificación cuando drift score > threshold',
+  'Implementa A/B testing para comparar versiones de modelo en producción',
+  'Replica un paper simple (ej: LoRA), reporta diferencias vs los números del paper',
+]} />
+
+<CheckpointCallout>
+Tu proyecto FairHire/Ergane debe tener: (1) métricas de performance, (2) tests automatizados, (3) documentación de decisiones técnicas.
+</CheckpointCallout>
+
+## Starter Code
+
+<InteractiveCodeBlock
+  title="Placeholder — reemplaza con tu primer ejercicio"
+  description="MLOps Avanzado: CI/CD + Drift"
+  code={`// TODO: starter code para MLOps Avanzado: CI/CD + Drift
+console.log('Módulo: MLOps Avanzado: CI/CD + Drift')
+`}
+/>
+
+**Fin de esta fase.**

@@ -1,0 +1,54 @@
+---
+title: Diseño de Sistemas de Inference
+topic: ai
+difficulty: advanced
+timeEstimate: 4w
+tags:
+  - inference
+  - batching
+  - caching
+  - system-design
+  - mlops
+phase: 3
+---
+
+import ResourceTable from '../../components/ResourceTable'
+import CheckpointCallout from '../../components/CheckpointCallout'
+import DeliverableList from '../../components/DeliverableList'
+import InteractiveCodeBlock from '../../components/InteractiveCodeBlock'
+
+# Diseño de Sistemas de Inference
+
+> **Objetivo:** Completa los deliverables abajo antes de marcar este módulo como terminado.
+
+<ResourceTable rows={[
+  { tipo: 'Course', nombre: 'Stanford CS325A — LLM Systems Design', url: 'https://stanford-cs325a.github.io/', nota: 'Free slides. Covers PagedAttention, KV cache, and batching tradeoffs' },
+  { tipo: 'Book', nombre: 'vLLM Documentation', url: 'https://docs.vllm.ai/', nota: 'Official. Dynamic batching + KV cache explained with code snippets' },
+  { tipo: 'Code', nombre: 'vLLM examples + llama.cpp', url: 'https://github.com/vllm-project/vllm/tree/main/examples', nota: 'Offline inference scripts. C++/Python bindings for internals' },
+]} />
+
+## Deliverables
+
+<DeliverableList moduleId="advanced-inference-system" items={[
+  'Diseña sistema de inference con dynamic batching, KV cache y circuit breaker',
+  'Implementa request batching: agrupa requests en ventanas de 10-50ms',
+  'Implementa semantic caching: evita re-inference para queries similares (cosine sim > 0.95)',
+  'Benchmark: mide tokens/sec y latency p99 con tu sistema vs naive endpoint',
+  'Documenta: ¿cuándo vale la pena el batching overhead?',
+]} />
+
+<CheckpointCallout>
+Si tu sistema de inference no mejora >2x throughput vs single-request con batching, revisa tu implementación.
+</CheckpointCallout>
+
+## Starter Code
+
+<InteractiveCodeBlock
+  title="Placeholder — reemplaza con tu primer ejercicio"
+  description="Diseño de Sistemas de Inference"
+  code={`// TODO: starter code para Diseño de Sistemas de Inference
+console.log('Módulo: Diseño de Sistemas de Inference')
+`}
+/>
+
+**Siguiente módulo:** [[nlp-finetuning]]

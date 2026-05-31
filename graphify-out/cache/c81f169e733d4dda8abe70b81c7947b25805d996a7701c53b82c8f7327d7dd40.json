@@ -1,0 +1,1 @@
+{"nodes": [{"id": "aws_mla", "label": "aws-mla.ts", "file_type": "code", "source_file": "src/tracks/aws-mla.ts", "source_location": "L1"}], "edges": [{"source": "aws_mla", "target": "types", "relation": "imports_from", "confidence": "EXTRACTED", "source_file": "src/tracks/aws-mla.ts", "source_location": "L1", "weight": 1.0}]}

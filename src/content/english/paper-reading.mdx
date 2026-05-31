@@ -1,0 +1,163 @@
+---
+title: Paper Reading (ML/AI Research)
+topic: english
+difficulty: advanced
+timeEstimate: 2w
+tags:
+  - english
+  - research
+  - papers
+  - ml
+  - reading-comprehension
+studyTool: notebooklm
+notebooklmModuleId: paper-reading
+---
+
+# Paper Reading (ML/AI Research)
+
+> **Objetivo:** Leer y comprender papers de ML/AI en inglés con eficiencia — de abstract a implementación. El inglés académico de ML tiene un vocabulario cerrado de ~500 palabras — una vez que lo dominas, lees cualquier paper.
+
+## Objetivos de aprendizaje
+
+- Leer un paper de ML en 1 hora con comprensión profunda (no solo el abstract)
+- Identificar la contribución real de un paper en 5 minutos (abstract + figures + conclusions)
+- Extraer la arquitectura/algoritmo central y explicarlo en tus propias palabras
+- Escribir un 1-page summary en inglés técnico que otro engineer pueda entender
+- Replicar la idea central de un paper en código (sin mirar la implementación oficial)
+
+## Conceptos clave
+
+### The 3-Pass Method (Keshav, Stanford)
+
+```
+Pass 1 (5-10 min) — Bird's eye view
+  ├─ Read: title, abstract, introduction, conclusions
+  ├─ Skim: section headings, figures, tables
+  └─ Answer: What's the problem? What's the contribution? Is this paper relevant to me?
+
+Pass 2 (1 hour) — Content absorption
+  ├─ Read: entire paper, but skip detailed proofs and implementation minutiae
+  ├─ Mark: terms you don't understand, claims that need verification
+  ├─ Summarize: main argument in 3-5 bullet points
+  └─ Answer: Could I explain this paper to a colleague?
+
+Pass 3 (3-5 hours) — Deep understanding (only for critical papers)
+  ├─ Reconstruct: derive the math yourself, re-implement the method
+  ├─ Challenge: what assumptions are they making? Are they valid?
+  └─ Answer: What would I do differently? What's the next problem?
+```
+
+### Academic English for ML — High-Frequency Patterns
+
+```
+Contribution framing:
+  "We propose [Method], a novel approach to [Problem] that [Key insight]."
+  "Unlike prior work, [Method] does not require [Expensive thing]."
+  "Our key insight is that [Simple observation] enables [Big result]."
+
+Claim hedging (how researchers avoid overclaiming):
+  "Our results suggest that..."    (not "prove")
+  "This appears to be..."          (not "is")
+  "To the best of our knowledge..."(not "for the first time ever")
+  "We hypothesize that..."         (not "we know that")
+
+Comparing to prior work:
+  "In contrast to [PriorWork], our method..."
+  "[PriorWork] achieved X, but at the cost of Y. We address this by..."
+  "While [PriorWork] focused on [Aspect], we consider [Broader aspect]."
+```
+
+### Key Vocabulary — 20 words you'll see in every ML paper
+
+| Word | Meaning in context | Example |
+|------|-------------------|---------|
+| propose | introduce (not "suggest casually") | "We propose a new architecture" |
+| leverage | use strategically | "We leverage pre-trained embeddings" |
+| mitigate | reduce/address (a problem) | "To mitigate overfitting..." |
+| facilitate | enable/make easier | "This facilitates faster convergence" |
+| albeit | although (formal) | "Albeit at higher computational cost" |
+| akin to | similar to | "Akin to batch normalization" |
+| yield | produce (a result) | "This yields a 3% improvement" |
+| exhibit | show (a property) | "The model exhibits strong generalization" |
+| induce | cause/create | "This induces sparsity in the weights" |
+| inherently | by its nature | "The method is inherently parallelizable" |
+| constitute | make up/form | "These layers constitute the encoder" |
+| derive | obtain mathematically | "We derive a closed-form solution" |
+| explicitly | stated directly | "We explicitly model the uncertainty" |
+| implicitly | without stating directly | "The model implicitly learns..." |
+| substantially | significantly | "Substantially outperforms baselines" |
+| albeit | though | "Slower, albeit more accurate" |
+| pertaining to | relating to | "Results pertaining to convergence" |
+| respectively | in that order | "A and B achieve 90% and 85%, respectively" |
+| furthermore | in addition (formal) | "Furthermore, we show..." |
+| conversely | in contrast | "Conversely, the smaller model..." |
+
+## Estrategia (2 semanas)
+
+**Semana 1 — Fundamentos + 2 papers**
+- Día 1: Ver Stanford CS230 "How to Read Papers" — internalizar 3-pass method
+- Día 2-3: Leer "Attention Is All You Need" (Vaswani et al., 2017) — Pass 1 + Pass 2
+- Día 4: Escribir 1-page summary de Attention paper en tus propias palabras
+- Día 5-6: Leer "LoRA: Low-Rank Adaptation" (Hu et al., 2021) — Pass 1 + Pass 2
+- Día 7: Escribir 1-page summary de LoRA — comparar con Attention (¿qué problema resuelve LoRA que Attention no?)
+
+**Semana 2 — Deep dive + producción**
+- Día 8-9: Re-leer Attention paper — Pass 3: derivar scaled dot-product attention a mano, entender cada ecuación
+- Día 10-11: Re-leer LoRA — Pass 3: implementar LoRA en PyTorch para una capa linear simple
+- Día 12: Comparar ambos papers — ¿qué patronos de escritura académica comparten?
+- Día 13: Leer un tercer paper de tu elección (ej: "FlashAttention", "DPO", "Llama 3 paper") — Pass 1 autónomo
+- Día 14: Escribir mini-review comparando los 3 papers — 2 páginas
+
+## Recursos
+
+| Recurso | Tipo | Link |
+|---|---|---|
+| Stanford CS230 — How to Read Papers | Video | [YouTube](https://www.youtube.com/watch?v=733m6qBH-jI) |
+| Keshav — "How to Read a Paper" | Paper (3-pass method original) | [ACM](https://dl.acm.org/doi/10.1145/1273445.1273458) |
+| Attention Is All You Need | Paper | [arXiv](https://arxiv.org/abs/1706.03762) |
+| LoRA: Low-Rank Adaptation | Paper | [arXiv](https://arxiv.org/abs/2106.09685) |
+| Papers With Code | Papers + implementaciones | [paperswithcode.com](https://paperswithcode.com) |
+| arXiv Sanity | Descubrir papers relevantes | [arxiv-sanity-lite.com](https://arxiv-sanity-lite.com) |
+| Semantic Scholar | Búsqueda académica con citations | [semanticscholar.org](https://www.semanticscholar.org) |
+
+## Deliverables
+
+- [ ] Stanford CS230 video visto — notes on 3-pass method
+- [ ] "Attention Is All You Need" — 1-page summary escrito
+- [ ] "LoRA" — 1-page summary escrito
+- [ ] Comparación Attention vs LoRA — ¿qué problema resuelve cada uno?
+- [ ] LoRA implementada en PyTorch (forward pass para capa linear)
+- [ ] 1 paper adicional leído (Pass 1 + Pass 2 autónomo)
+- [ ] Podcast de NotebookLM con preguntas sobre los 3 papers
+
+## Prompts para NotebookLM
+
+```
+1. Explícame la arquitectura del Transformer como si fuera un pipeline de datos — sin ecuaciones
+2. Dame un quiz de 10 preguntas sobre "Attention Is All You Need" — yo respondo en inglés, tú corriges
+3. ¿Cuál es la diferencia clave entre LoRA y fine-tuning completo? Explícamelo con una analogía
+4. Genera un resumen de 200 palabras de LoRA al estilo de un blog post técnico
+5. Dame 5 frases del paper de Attention y pídeme que las parafrasee en inglés más simple
+6. ¿Qué significan estas palabras en el contexto de ML papers? [spurious, granularity, inductive bias, tractable, amenable]
+7. Simula una discusión académica: yo presento una crítica a LoRA, tú defiendes el paper como autor
+```
+
+## Siguiente fase
+
+- [ ] 3 papers leídos con 1-page summary cada uno
+- [ ] 1 paper implementado en código (no solo leído)
+- [ ] Capacidad de leer un paper nuevo en 1 hora (Pass 1 + Pass 2)
+- [ ] Podcast NLM con preguntas de los papers — 80%+ correcto
+
+**Siguiente módulo:** [[interview-prep]]
+
+{/* <!-- notebooklm-sync-start --> */}
+> NotebookLM module: `paper-reading`
+> Last synced: 2026-05-05T09:21:27.884Z
+
+## NotebookLM Summary
+_No summary returned._
+
+## NotebookLM Q&A
+_No Q&A returned._
+{/* <!-- notebooklm-sync-end --> */}

@@ -1,0 +1,54 @@
+---
+title: OS & Concurrencia para Inference
+topic: systems
+difficulty: advanced
+timeEstimate: 3w
+tags:
+  - os
+  - threads
+  - concurrency
+  - asyncio
+  - python
+phase: 2
+---
+
+import ResourceTable from '../../components/ResourceTable'
+import CheckpointCallout from '../../components/CheckpointCallout'
+import DeliverableList from '../../components/DeliverableList'
+import InteractiveCodeBlock from '../../components/InteractiveCodeBlock'
+
+# OS & Concurrencia para Inference
+
+> **Objetivo:** Completa los deliverables abajo antes de marcar este módulo como terminado.
+
+<ResourceTable rows={[
+  { tipo: 'Course', nombre: 'MIT 6.S081 — Operating System Engineering', url: 'https://pdos.csail.mit.edu/6.828/2020/schedule.html', nota: 'Covers scheduling, threading, async at OS level. Labs force you to implement pools' },
+  { tipo: 'Book', nombre: 'OSTEP — Concurrency Chapters', url: 'https://pages.cs.wisc.edu/~remzi/OSTEP/', nota: 'Free. Best thread/process/lock explanations. Maps to async vs multiprocessing tradeoffs' },
+  { tipo: 'Code', nombre: 'CPython concurrent.futures + asyncio source', url: 'https://github.com/python/cpython/tree/main/Lib', nota: 'Read how CPython implements pools. Production-tested patterns' },
+]} />
+
+## Deliverables
+
+<DeliverableList moduleId="os-concurrency" items={[
+  'Implementa un thread pool en Python (sin concurrent.futures) para inference batch',
+  'Mide throughput: requests/sec con 1, 4, 8, 16 threads en un modelo Ollama',
+  'Implementa un async request queue con asyncio para inference paralela',
+  'Explica la diferencia entre parallelism (CPU-bound) y concurrency (I/O-bound) en inference',
+  'Documenta: ¿cuándo usar multiprocessing vs asyncio para un inference server?',
+]} />
+
+<CheckpointCallout>
+Si tu thread pool tiene race conditions o deadlocks bajo carga, no estás listo para el siguiente módulo.
+</CheckpointCallout>
+
+## Starter Code
+
+<InteractiveCodeBlock
+  title="Placeholder — reemplaza con tu primer ejercicio"
+  description="OS & Concurrencia para Inference"
+  code={`// TODO: starter code para OS & Concurrencia para Inference
+console.log('Módulo: OS & Concurrencia para Inference')
+`}
+/>
+
+**Siguiente módulo:** [[ml-fundamentals]]

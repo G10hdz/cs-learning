@@ -1,0 +1,150 @@
+---
+title: Ollama Review
+topic: english
+difficulty: beginner
+timeEstimate: 1w
+tags:
+  - english
+  - ollama
+  - llm
+  - writing
+  - review
+studyTool: notebooklm
+notebooklmModuleId: ollama-review
+---
+
+# Ollama Review
+
+> **Objetivo:** Escribir una review técnica de Ollama en inglés — documentar setup, modelos probados, performance. El deliverable es una pieza de technical writing real que podrías publicar en un blog o dev.to.
+
+## Objetivos de aprendizaje
+
+- Instalar y configurar Ollama localmente — probar al menos 3 modelos de diferente tamaño
+- Escribir una review técnica de 500+ palabras en inglés con estructura profesional
+- Usar vocabulario técnico preciso para describir performance, latencia, calidad de output
+- Estructurar la review como un blog post: hook → setup → benchmarks → conclusión
+- Recibir feedback de NotebookLM sobre claridad, gramática y tono del escrito
+
+## Conceptos clave
+
+### Estructura de una Technical Review
+
+```
+1. HOOK (1-2 frases)
+   ¿Por qué le interesa esto al lector? Problema que Ollama resuelve.
+
+2. WHAT IS OLLAMA? (3-4 frases)
+   "Ollama is an open-source tool that lets you run LLMs locally with one command.
+   No cloud, no API keys, no latency. Think Docker, but for LLMs."
+
+3. SETUP EXPERIENCE (1 párrafo)
+   ¿Qué tan fácil fue instalar? ¿Sorpresas? ¿Problemas?
+   "Installation was straightforward: brew install ollama on macOS, or a single
+   binary on Linux. Within 2 minutes I was running my first model."
+
+4. MODELS TESTED (tabla + comentario)
+   Lista los modelos, tamaño, y primera impresión de cada uno.
+
+5. PERFORMANCE / BENCHMARKS (datos concretos)
+   Tokens/segundo, uso de RAM, calidad de respuesta para un prompt estándar.
+
+6. USE CASES (3-4 bullets)
+   ¿Para qué sirve esto realmente? ¿Para qué NO sirve?
+
+7. VERDICT / RECOMMENDATION (2-3 frases)
+   ¿Lo recomendarías? ¿A quién? ¿Vale la pena vs ChatGPT/Gemini API?
+```
+
+### Technical Writing Vocabulary for Reviews
+
+| Concepto | Frase |
+|----------|-------|
+| Setup | "Getting started with Ollama is refreshingly simple..." |
+| Performance | "On my M1 MacBook with 16GB RAM, llama3.2 generated at ~25 tokens/sec..." |
+| Comparison | "Compared to the ChatGPT API, Ollama trades latency for privacy..." |
+| Limitations | "The main limitation I encountered was..." / "Where Ollama falls short is..." |
+| Surprise | "What surprised me most was..." / "I didn't expect..." |
+| Verdict | "For [use case], Ollama is a no-brainer. For [other use case], I'd stick with [alternative]." |
+
+### Model Comparison Template
+
+| Model | Size | RAM Used | Tokens/sec | Quality (1-5) | Best For |
+|-------|------|----------|------------|---------------|----------|
+| llama3.2 | 3B | ~3GB | ~25 t/s | 3 | Quick chat, simple tasks |
+| mistral | 7B | ~5GB | ~18 t/s | 4 | General purpose, coding |
+| deepseek-r1 | 7B | ~5GB | ~15 t/s | 4 | Reasoning, math, logic |
+| qwen2.5-coder | 7B | ~5GB | ~16 t/s | 5 | Code generation |
+
+## Estrategia (1 semana)
+
+**Días 1-2 — Setup + exploración**
+- Instalar Ollama: `curl -fsSL https://ollama.com/install.sh | sh`
+- Pull 3 modelos: `ollama pull llama3.2`, `ollama pull mistral`, `ollama pull qwen2.5-coder`
+- Probar cada modelo con el mismo prompt: "Explain backpropagation in simple terms"
+- Tomar notas: tiempo de respuesta, calidad, uso de RAM (`ollama ps`)
+
+**Días 3-4 — Benchmarks + escritura (borrador)**
+- Definir 3 prompts de prueba estándar (explicación, código, razonamiento)
+- Correr los 3 prompts en los 3 modelos — anotar resultados
+- Escribir borrador de la review: 300 palabras, estructura completa
+
+**Días 5-6 — Revisión + expansión**
+- Pasar borrador por NotebookLM: pedir feedback de claridad, gramática, tono
+- Expandir a 500+ palabras — añadir use cases, limitaciones, comparación con API
+- Leer en voz alta — ¿suena natural? ¿demasiado formal?
+
+**Día 7 — Versión final + vocabulario**
+- Pulir versión final
+- Extraer 20 palabras/expresiones técnicas usadas en la review → flashcards
+- Quiz NotebookLM sobre vocabulario de la review
+
+## Recursos
+
+| Recurso | Tipo | Link |
+|---|---|---|
+| Ollama GitHub | Código fuente + docs | [github.com/ollama](https://github.com/ollama/ollama) |
+| Ollama Blog | Posts oficiales | [ollama.com/blog](https://ollama.com/blog/) |
+| Ollama Models Library | Lista de modelos disponibles | [ollama.com/library](https://ollama.com/library) |
+| dev.to | Publicar la review (opcional) | [dev.to](https://dev.to) |
+| Hemingway App | Checar legibilidad del texto | [hemingwayapp.com](https://hemingwayapp.com) |
+
+## Deliverables
+
+- [ ] Ollama instalado y funcional — 3 modelos descargados y probados
+- [ ] Tabla de benchmarks: 3 modelos × 3 prompts = 9 resultados documentados
+- [ ] Borrador de review: 300+ palabras con estructura completa
+- [ ] Versión final: 500+ palabras, corregida con feedback de NotebookLM
+- [ ] 20 flashcards de vocabulario técnico usado en la review
+- [ ] Quiz NotebookLM: vocabulario técnico de LLMs — 80%+
+
+## Prompts para NotebookLM
+
+```
+1. Lee mi review de Ollama y dame feedback: ¿es clara? ¿suena natural? ¿qué mejorarías? [pega tu texto aquí]
+2. Dame 10 sugerencias de vocabulario técnico más preciso para reemplazar palabras vagas en mi review
+3. ¿Cuál es la diferencia entre "latency", "throughput" y "responsiveness" en el contexto de LLMs locales?
+4. Simula que eres un editor de blog técnico — dime qué cortarías de mi review y por qué
+5. Genera un quiz de 15 términos técnicos de LLMs que aparecen en mi review — yo defino, tú corriges
+6. ¿Cómo comparo objetivamente la calidad de output entre modelos? Dame un framework de evaluación
+7. Dame 3 hooks alternativos para empezar mi review — elige el mejor
+```
+
+## Siguiente fase
+
+- [ ] Review de 500+ palabras, editada y pulida
+- [ ] Benchmarks documentados con datos reales
+- [ ] Vocabulario técnico de LLMs dominado
+- [ ] Opcional: publicar en dev.to o blog personal
+
+**Siguiente módulo:** [[interview-prep]]
+
+{/* <!-- notebooklm-sync-start --> */}
+> NotebookLM module: `ollama-review`
+> Last synced: 2026-05-05T09:21:02.903Z
+
+## NotebookLM Summary
+_No summary returned._
+
+## NotebookLM Q&A
+_No Q&A returned._
+{/* <!-- notebooklm-sync-end --> */}

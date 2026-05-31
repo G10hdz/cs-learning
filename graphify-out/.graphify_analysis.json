@@ -1,0 +1,598 @@
+{
+  "communities": {
+    "0": [
+      "achievements",
+      "aws_mla",
+      "badgeshelf",
+      "badgeshelf_badgeshelf",
+      "cs_ai",
+      "dailyquests",
+      "english",
+      "gamificationheader",
+      "gamificationheader_handlecontinue",
+      "mandarin",
+      "projects",
+      "streakbadge",
+      "trackphaseview",
+      "types",
+      "usegamification",
+      "usegamification_usegamification",
+      "useunifiedprogress",
+      "useunifiedprogress_gettoday",
+      "xpprogressbar",
+      "xpprogressbar_xpprogressbar"
+    ],
+    "1": [
+      "app",
+      "app_buildroadmapnodes",
+      "app_notebooklmmapprovider",
+      "app_skeleton",
+      "deliverablelist",
+      "deliverablelist_handletoggle",
+      "roadmaptree",
+      "roadmaptree_computeprogress",
+      "roadmaptree_difficultyclass",
+      "roadmaptree_formatpercent",
+      "searchbar",
+      "searchbar_highlight",
+      "searchbar_usedebouncedvalue",
+      "trackselector",
+      "useprogress"
+    ],
+    "2": [
+      "claude_cs-ai-learning-roadmap-site",
+      "claude_mdx",
+      "claude_minisearch",
+      "claude_netlify",
+      "claude_notebooklm",
+      "claude_react",
+      "claude_tailwind-v4",
+      "claude_typescript",
+      "claude_vite",
+      "claude_zustand",
+      "readme_react-19",
+      "readme_tailwind-v4"
+    ],
+    "3": [
+      "obsidian_to_mdx",
+      "obsidian_to_mdx_convertfile",
+      "obsidian_to_mdx_ensuredir",
+      "obsidian_to_mdx_extracttags",
+      "obsidian_to_mdx_extracttitle",
+      "obsidian_to_mdx_getmarkdownfiles",
+      "obsidian_to_mdx_inferdifficulty",
+      "obsidian_to_mdx_infertopic",
+      "obsidian_to_mdx_run",
+      "obsidian_to_mdx_toslug",
+      "obsidian_to_mdx_transformobsidiansyntax"
+    ],
+    "4": [
+      "claude_content-pipeline",
+      "claude_import-meta-glob",
+      "claude_mdx-processing-pipeline",
+      "claude_parse-frontmatter",
+      "claude_remark-frontmatter",
+      "claude_remark-gfm",
+      "claude_remark-mdx-frontmatter",
+      "claude_remark-wiki-links",
+      "claude_src-content-index-ts",
+      "claude_virtual-mdx-raw"
+    ],
+    "5": [
+      "icons_bluesky-icon",
+      "icons_discord-icon",
+      "icons_documentation-icon",
+      "icons_github-icon",
+      "icons_social-icon",
+      "icons_svg",
+      "icons_x-icon"
+    ],
+    "6": [
+      "cs_learning_project",
+      "graph_report",
+      "hero_png",
+      "react_framework",
+      "react_svg",
+      "vite_build",
+      "vite_svg"
+    ],
+    "7": [
+      "darkmodetoggle",
+      "darkmodetoggle_darkmodetoggle",
+      "usedarkmode",
+      "usedarkmode_getinitial",
+      "usedarkmode_getsystempreference",
+      "usedarkmode_usedarkmode"
+    ],
+    "8": [
+      "roadmap_badge-shelf-tsx",
+      "roadmap_daily-quests-tsx",
+      "roadmap_gamification-header-tsx",
+      "roadmap_streak-badge-tsx",
+      "roadmap_week-3-gamification-ui",
+      "roadmap_xp-progress-bar-tsx"
+    ],
+    "9": [
+      "notebooklm_context",
+      "notebooklm_context_usenotebooklmsync",
+      "notebooklmmodulecard",
+      "notebooklmmodulecard_buildcommandhint",
+      "notebooklmmodulecard_notebooklmmodulecard"
+    ],
+    "10": [
+      "context_final-architecture",
+      "readme_gamification",
+      "roadmap_use-gamification",
+      "roadmap_use-unified-progress",
+      "roadmap_week-2-progress-gamification"
+    ],
+    "11": [
+      "vite_config",
+      "vite_config_mdxrawplugin",
+      "vite_config_remarkwikilinks",
+      "vite_config_toslug"
+    ],
+    "12": [
+      "index",
+      "index_extractnotebooklmsync",
+      "index_parsefrontmatter",
+      "index_toslug"
+    ],
+    "13": [
+      "learningmap",
+      "learningmap_handlenodeclick",
+      "learningmap_layoutgraph"
+    ],
+    "14": [
+      "curriculum",
+      "curriculum_findcourse",
+      "curriculum_getprerequisites"
+    ],
+    "15": [
+      "interactivecodeblock",
+      "interactivecodeblock_interactivecodeblock"
+    ],
+    "16": [
+      "resourcetable",
+      "resourcetable_resourcetable"
+    ],
+    "17": [
+      "relatedmodules",
+      "relatedmodules_relatedmodules"
+    ],
+    "18": [
+      "design_rationale_commute-design",
+      "design_visual-theme"
+    ],
+    "19": [
+      "design_improvements_mobile-responsive",
+      "design_responsive-rules"
+    ],
+    "20": [
+      "design_anti-patterns",
+      "design_improvements_visual-monotony-fix"
+    ],
+    "21": [
+      "roadmap_track-selector-tsx",
+      "roadmap_week-1-multi-track"
+    ],
+    "22": [
+      "postcss_config"
+    ],
+    "23": [
+      "eslint_config"
+    ],
+    "24": [
+      "tailwind_config"
+    ],
+    "25": [
+      "main"
+    ],
+    "26": [
+      "mdx_d"
+    ],
+    "27": [
+      "checkpointcallout"
+    ],
+    "28": [
+      "design_design-system"
+    ],
+    "29": [
+      "design_color-palette"
+    ],
+    "30": [
+      "design_typography-rules"
+    ],
+    "31": [
+      "design_component-stylings"
+    ],
+    "32": [
+      "design_layout-principles"
+    ],
+    "33": [
+      "design_motion-interaction"
+    ],
+    "34": [
+      "design_addictive-design"
+    ],
+    "35": [
+      "design_implementation-priority"
+    ],
+    "36": [
+      "design_improvements_summary"
+    ],
+    "37": [
+      "design_improvements_friction-removal"
+    ],
+    "38": [
+      "design_improvements_cognitive-load-reduction"
+    ],
+    "39": [
+      "design_improvements_animation-micro-interactions"
+    ],
+    "40": [
+      "design_improvements_accessibility-aria"
+    ],
+    "41": [
+      "design_improvements_anti-patterns-eliminated"
+    ],
+    "42": [
+      "readme_cs-learning-site"
+    ],
+    "43": [
+      "readme_5-learning-tracks"
+    ],
+    "44": [
+      "readme_offline-first"
+    ],
+    "45": [
+      "readme_mobile-optimized"
+    ],
+    "46": [
+      "readme_dark-mode"
+    ],
+    "47": [
+      "readme_mdx-content"
+    ],
+    "48": [
+      "readme_search"
+    ],
+    "49": [
+      "readme_progress-tracking"
+    ],
+    "50": [
+      "readme_zustand-persist"
+    ],
+    "51": [
+      "readme_canvas-confetti"
+    ],
+    "52": [
+      "readme_geist-font"
+    ],
+    "53": [
+      "readme_satoshi-font"
+    ],
+    "54": [
+      "readme_jetbrains-mono"
+    ],
+    "55": [
+      "readme_src-tracks"
+    ],
+    "56": [
+      "readme_src-lib"
+    ],
+    "57": [
+      "readme_src-components"
+    ],
+    "58": [
+      "readme_src-content"
+    ],
+    "59": [
+      "readme_src-data"
+    ],
+    "60": [
+      "readme_scripts"
+    ],
+    "61": [
+      "context_cs-learning-project-context"
+    ],
+    "62": [
+      "context_virtual-mdx-raw-module"
+    ],
+    "63": [
+      "context_content-frontmatter-schema"
+    ],
+    "64": [
+      "context_routing"
+    ],
+    "65": [
+      "context_phase-structure"
+    ],
+    "66": [
+      "roadmap_unified-learning-platform"
+    ],
+    "67": [
+      "roadmap_week-4-language-tracks"
+    ],
+    "68": [
+      "roadmap_week-5-projects-track"
+    ],
+    "69": [
+      "roadmap_week-6-polish-deploy"
+    ],
+    "70": [
+      "roadmap_achievements-ts"
+    ],
+    "71": [
+      "roadmap_track-phase-view-tsx"
+    ],
+    "72": [
+      "roadmap_related-modules-tsx"
+    ],
+    "73": [
+      "roadmap_learning-map-tsx"
+    ],
+    "74": [
+      "roadmap_xp-rules"
+    ],
+    "75": [
+      "roadmap_level-formula"
+    ],
+    "76": [
+      "roadmap_streak-rules"
+    ],
+    "77": [
+      "roadmap_netlify-toml"
+    ],
+    "78": [
+      "claude_mdx-raw-plugin"
+    ],
+    "79": [
+      "claude_gray-matter"
+    ],
+    "80": [
+      "claude_use-progress"
+    ],
+    "81": [
+      "claude_notebooklm-context"
+    ],
+    "82": [
+      "claude_sync-notebooklm-mjs"
+    ],
+    "83": [
+      "claude_nlm-cli"
+    ],
+    "84": [
+      "claude_obsidian-to-mdx-js"
+    ],
+    "85": [
+      "claude_curriculum-ts"
+    ],
+    "86": [
+      "claude_use-dark-mode"
+    ],
+    "87": [
+      "claude_roadmap-tree"
+    ],
+    "88": [
+      "favicon"
+    ]
+  },
+  "cohesion": {
+    "0": 0.12,
+    "1": 0.14,
+    "2": 0.17,
+    "3": 0.33,
+    "4": 0.2,
+    "5": 0.62,
+    "6": 0.43,
+    "7": 0.4,
+    "8": 0.33,
+    "9": 0.4,
+    "10": 0.5,
+    "11": 0.5,
+    "12": 0.5,
+    "13": 0.67,
+    "14": 1.0,
+    "15": 1.0,
+    "16": 1.0,
+    "17": 1.0,
+    "18": 1.0,
+    "19": 1.0,
+    "20": 1.0,
+    "21": 1.0,
+    "22": 1.0,
+    "23": 1.0,
+    "24": 1.0,
+    "25": 1.0,
+    "26": 1.0,
+    "27": 1.0,
+    "28": 1.0,
+    "29": 1.0,
+    "30": 1.0,
+    "31": 1.0,
+    "32": 1.0,
+    "33": 1.0,
+    "34": 1.0,
+    "35": 1.0,
+    "36": 1.0,
+    "37": 1.0,
+    "38": 1.0,
+    "39": 1.0,
+    "40": 1.0,
+    "41": 1.0,
+    "42": 1.0,
+    "43": 1.0,
+    "44": 1.0,
+    "45": 1.0,
+    "46": 1.0,
+    "47": 1.0,
+    "48": 1.0,
+    "49": 1.0,
+    "50": 1.0,
+    "51": 1.0,
+    "52": 1.0,
+    "53": 1.0,
+    "54": 1.0,
+    "55": 1.0,
+    "56": 1.0,
+    "57": 1.0,
+    "58": 1.0,
+    "59": 1.0,
+    "60": 1.0,
+    "61": 1.0,
+    "62": 1.0,
+    "63": 1.0,
+    "64": 1.0,
+    "65": 1.0,
+    "66": 1.0,
+    "67": 1.0,
+    "68": 1.0,
+    "69": 1.0,
+    "70": 1.0,
+    "71": 1.0,
+    "72": 1.0,
+    "73": 1.0,
+    "74": 1.0,
+    "75": 1.0,
+    "76": 1.0,
+    "77": 1.0,
+    "78": 1.0,
+    "79": 1.0,
+    "80": 1.0,
+    "81": 1.0,
+    "82": 1.0,
+    "83": 1.0,
+    "84": 1.0,
+    "85": 1.0,
+    "86": 1.0,
+    "87": 1.0,
+    "88": 1.0
+  },
+  "gods": [
+    {
+      "id": "claude_cs-ai-learning-roadmap-site",
+      "label": "CS/AI Learning Roadmap Site",
+      "edges": 9
+    },
+    {
+      "id": "obsidian_to_mdx_convertfile",
+      "label": "convertFile()",
+      "edges": 7
+    },
+    {
+      "id": "icons_svg",
+      "label": "Icons SVG Sprite Sheet",
+      "edges": 6
+    },
+    {
+      "id": "graph_report",
+      "label": "Graph Report",
+      "edges": 6
+    },
+    {
+      "id": "roadmap_week-3-gamification-ui",
+      "label": "Week 3 \u2014 Gamification UI",
+      "edges": 5
+    },
+    {
+      "id": "claude_mdx-processing-pipeline",
+      "label": "MDX Processing Pipeline",
+      "edges": 5
+    },
+    {
+      "id": "claude_src-content-index-ts",
+      "label": "src/content/index.ts",
+      "edges": 4
+    },
+    {
+      "id": "icons_bluesky-icon",
+      "label": "Bluesky Social Platform Icon",
+      "edges": 4
+    },
+    {
+      "id": "icons_discord-icon",
+      "label": "Discord Social Platform Icon",
+      "edges": 4
+    },
+    {
+      "id": "icons_github-icon",
+      "label": "GitHub Platform Icon",
+      "edges": 4
+    }
+  ],
+  "surprises": [
+    {
+      "source": "React 19",
+      "target": "React",
+      "source_files": [
+        "README.md",
+        "CLAUDE.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "semantically_similar_to",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; semantically similar concepts with no structural link"
+    },
+    {
+      "source": "Tailwind CSS v4",
+      "target": "Tailwind v4",
+      "source_files": [
+        "README.md",
+        "CLAUDE.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "semantically_similar_to",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; semantically similar concepts with no structural link"
+    },
+    {
+      "source": "Graph Report",
+      "target": "React Logo SVG",
+      "source_files": [
+        "graphify-out/GRAPH_REPORT.md",
+        "src/assets/react.svg"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "crosses file types (doc \u2194 image); connects across different repos/directories; peripheral node `React Logo SVG` unexpectedly reaches hub `Graph Report`"
+    },
+    {
+      "source": "Graph Report",
+      "target": "Vite Logo SVG",
+      "source_files": [
+        "graphify-out/GRAPH_REPORT.md",
+        "src/assets/vite.svg"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "crosses file types (doc \u2194 image); connects across different repos/directories; peripheral node `Vite Logo SVG` unexpectedly reaches hub `Graph Report`"
+    },
+    {
+      "source": "Graph Report",
+      "target": "Hero Image",
+      "source_files": [
+        "graphify-out/GRAPH_REPORT.md",
+        "src/assets/hero.png"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "crosses file types (doc \u2194 image); connects across different repos/directories; peripheral node `Hero Image` unexpectedly reaches hub `Graph Report`"
+    }
+  ],
+  "questions": [
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `CS-Learning Platform Design System`, `Visual Theme (Vibrant, Asymmetric, Spring Motion)`, `Color Palette (Canvas Base, Energy Amber, etc.)` to the rest of the system?",
+      "why": "91 weakly-connected nodes found - possible documentation gaps or missing edges."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 0` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.12 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 1` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.14 - nodes in this community are weakly interconnected."
+    }
+  ]
+}
