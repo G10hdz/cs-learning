@@ -28,3 +28,8 @@ public/mit-18.01/
 public/mit-18.02/
 public/mit-18.06/
 public/mit-*/_offline-manifest.json
+*.zip
+18.01sc-fall-2010.zip
+18.02sc-fall-2010.zip
+18.06sc-fall-2011.zip
+*.pdf
